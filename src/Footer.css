@@ -1,0 +1,42 @@
+.flex-div {
+  background-color: #003d29;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+  gap: 10%;
+  /* font-weight: 100; */
+  padding-top: 4%;
+  margin-top: 5%;
+}
+
+.container-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container-footer h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.container-footer a {
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.copyrights {
+  text-align: center;
+  background-color: #003d29;
+  color: white;
+  margin: 0;
+  font-weight: 200;
+  padding: 70px 0 20px;
+}
+
+.copyrights p {
+  margin: 0;
+}

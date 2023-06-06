@@ -1,0 +1,31 @@
+.bgcolor{
+    background-color: #ffe6cc;
+    width: 100%;
+    height: 100%;
+    margin: 50px 0;
+    padding:50px;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    color: #333;
+}
+
+.bgcolor img{
+    height: 300px;
+    width: 300px;
+}
+
+.bgcolor h1{
+    font-size: 4rem;
+}
+
+.bgcolor h6{
+    font-size: 1.6rem;
+    margin: 10px 0;
+    font-weight: 500 !important;
+}
+.bgcolor a{
+    background-color: #333;
+    border: none !important;
+    color: white;
+}
