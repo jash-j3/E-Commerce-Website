@@ -3,12 +3,12 @@
 .bodyDiv {
   background-image: url("https://wallpapercave.com/wp/wp3152211.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   aspect-ratio: 3.5;
   width: 100%;
   display: block;
   font-weight: 100;
-  height: 70%;
+  height: auto;
 }
 
 .transparent-div-black {
@@ -41,5 +41,45 @@
   font-weight: 200;
   margin: 0;
 }
+@media all and (max-width:1200px){
+  .transparent-div-black h1{
+    font-size: 3.5rem;
+  }
 
+  .transparent-div-black h6{
+    font-size: 1.5rem;
+  }
+}
 
+@media all and (max-width:950px){
+  .transparent-div-black h1{
+    font-size: 40px;
+  }
+
+  .transparent-div-black h6{
+    font-size: 1.5rem;
+  }
+}
+
+@media all and (max-width:640px){
+  .bodyDiv{
+    aspect-ratio: 2;
+  }
+  .transparent-div-black h1{
+    font-size: 30px;
+  }
+
+  .transparent-div-black h6{
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width:500px){
+  .transparent-div-black h1{
+    display: none;
+  }
+
+  .transparent-div-black h6{
+    font-size: 20px;
+  }
+}

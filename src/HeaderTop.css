@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
+
+
 .greenH{
     background-color: #003d29;
     width: 100%;
@@ -73,4 +75,22 @@
     align-items: center;
     justify-content: center;
     gap: 15%;
+}
+
+@media all and (max-width:1450px){
+    .acc-txt{
+        display: none;
+    }
+}
+
+@media all and (max-width:900px){
+    .dwd{
+        display: none;
+    }
+}
+
+@media all and (max-width:600px){
+    .sb{
+        display: none;
+    }
 }

@@ -34,7 +34,7 @@ function HeaderTop() {
             <a href="">Delivery</a>
           </div>
         </div>
-        <div className="searchbar">
+        <div className="searchbar sb">
           <input
             type="text"
             placeholder="Search products"
