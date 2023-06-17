@@ -3,27 +3,39 @@ const express = require('express');
 const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 
 router.get(`/`, async (req, res) =>{
     // res.send("Helo");
     // localhost:3000/api/v1/products?categories=2342342,234234
     let filter = {};
-    if(req.query.categories)
+    if(req.query.name)
     {
-         filter = {category: req.query.categories.split(',')}
+         filter = {name: req.query.name}
     }
-
+    const productList = await Product.find(filter).populate('category');
+    if(!productList) {
+        res.status(500).json({success: false});
+    } 
+    res.send(productList);
+})
+router.post('/' , async (req, res)=>
+{   
+    let filter = {};
+    if(req.body.name)
+    {
+         filter = {name: req.body.name};
+    }
     const productList = await Product.find(filter).populate('category');
 
     if(!productList) {
         res.status(500).json({success: false})
     } 
-    res.send(productList);
-})
 
+    res.send(productList);
+});
 router.get(`/:id`, async (req, res) =>{
-    const product = await Product.findById(req.params.id).populate('category');
+    const product = await Product.findById(req.body.id).populate('category');
 
     if(!product) {
         res.status(500).json({success: false})
@@ -31,7 +43,7 @@ router.get(`/:id`, async (req, res) =>{
     res.send(product);
 })
 
-router.post(`/`, async (req, res) =>{
+router.post(`/new`, async (req, res) =>{
     const category = await Category.findById(req.body.category);
     if(!category) return res.status(400).send('Invalid Category')
 
@@ -43,7 +55,7 @@ router.post(`/`, async (req, res) =>{
         brand: req.body.brand,
         price: req.body.price,
         category: req.body.category,
-        countInStock: req.body.countInStock,
+        countInStock: Number(req.body.countInStock),
         rating: req.body.rating,
         numReviews: req.body.numReviews,
         isFeatured: req.body.isFeatured,

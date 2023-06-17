@@ -9,7 +9,7 @@ require('dotenv/config');
 app.use(cors());
 app.options('*', cors())
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('tiny'));
 
 const categoriesRoutes = require('./routes/categories');
@@ -34,7 +34,7 @@ mongoose.connect('mongodb+srv://jcube:12345678abc@ecommercedb.ownnjq0.mongodb.ne
     console.log(err);
 })
 
-app.listen(3000, ()=>{
+app.listen(3001, ()=>{
 
-    console.log('server is running');
+    console.log('server is running at 3001');
 })

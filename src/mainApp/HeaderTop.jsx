@@ -1,12 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import "./HeaderTop.css";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Product } from "../Backend(DB)/models/product";
+
+
+let searchQuery='';
 
 function HeaderTop() {
+  const [searchQuery, setSearchQuery] = useState("");
+  function handleChange(event) {
+    fetch(`http://localhost:3001/products?name=${event.target.value}`).then(
+      (res)=>{console.log(res.json());}
+    );
+  }
+
   return (
     <div>
       <div className="greenH">
@@ -35,11 +46,13 @@ function HeaderTop() {
           </div>
         </div>
         <div className="searchbar sb">
-          <input
-            type="text"
-            placeholder="Search products"
-            className="input-box"
-          ></input>
+            <input
+              type="text"
+              placeholder="Search products"
+              className="input-box"
+              id = "searcher"
+              onKeyUp={handleChange}
+            ></input>
           <SearchIcon />
         </div>
         <div className="iconss">
@@ -57,5 +70,5 @@ function HeaderTop() {
     </div>
   );
 }
-
 export default HeaderTop;
+export {searchQuery};
