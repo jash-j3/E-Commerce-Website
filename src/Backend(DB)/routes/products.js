@@ -3,7 +3,8 @@ const express = require('express');
 const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
+router.use(express.json());
 
 router.get(`/`, async (req, res) =>{
     // res.send("Helo");
@@ -34,6 +35,21 @@ router.post('/' , async (req, res)=>
 
     res.send(productList);
 });
+
+router.post("/find", async (req, res) => {
+    console.log(req.body);
+    const { name } = req.body;
+  
+    Product.findOne({name:name}, (err, result) => {
+      console.log(result);
+      console.log(err);
+      if (result) {
+        res.send(result);
+      } else {
+        res.send({ message: "Cant find it"});
+      }
+    });
+  });
 router.get(`/:id`, async (req, res) =>{
     const product = await Product.findById(req.body.id).populate('category');
 

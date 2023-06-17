@@ -12,10 +12,25 @@ let searchQuery='';
 
 function HeaderTop() {
   const [searchQuery, setSearchQuery] = useState("");
-  function handleChange(event) {
-    fetch(`http://localhost:3001/products?name=${event.target.value}`).then(
-      (res)=>{console.log(res.json());}
-    );
+  // function handleChange(event) {
+  //   fetch(`http://localhost:3001/products?name=${event.target.value}`).then(
+  //     (res)=>{console.log(res.json());}
+  //   );
+  // }
+  
+  const handleChange = async(event)=>{
+    event.preventDefault()
+    
+      const fetchData = await fetch(`http://localhost:3001/products/find/`,{
+        method : "POST",
+        headers : {
+          "content-type" : "application/json"
+        },
+        body : JSON.stringify({name:event.target.value})
+      })
+
+      const dataRes = await fetchData.json()
+      console.log(dataRes)
   }
 
   return (
