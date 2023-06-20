@@ -4,7 +4,7 @@ const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
 // const bodyParser = require('body-parser');
-router.use(express.json());
+// router.use(express.json());
 
 router.get(`/`, async (req, res) =>{
     // res.send("Helo");
