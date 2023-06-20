@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e402329cbc.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-name">
+                <img src="https://static.wixstatic.com/media/1f3c0f_22bf7c1a6d8143a69d434304ce3ae908.png/v1/fill/w_69,h_61,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/1f3c0f_22bf7c1a6d8143a69d434304ce3ae908.png"
+                    alt="site-logo">
+                <p>Maxx<span>Cam</span></p>
+                <p>Lorem Ipsum Dolor Sit</p>
+            </div>
+            <div class="head-icons">
+                <a href="#">
+                    <div class="user-icon">
+                        <i class="fa-solid fa-circle-user" style="color: #51511f;"></i>
+                    </div>
+                    <span>Log In</span>
+                </a>
+                <a href="#">
+                    <div class="shop-icon">
+                        <i class="fa-solid fa-bag-shopping" style="color: #1f512b;"></i>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <div class="navbar">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact Us</a>
+            <p>Call Us : xxxxxxxxxx</p>
+        </div>
+        <div class="prev-next">
+            <div class="left"><a href="#">Home</a> /
+                <span id="product-name">I'm a product</span>
+            </div>
+
+            <div class="right">
+                <a href="#"><i class="fa-solid fa-chevron-left"></i>
+                    Prev</a>
+                |
+                <a href="#">Next
+                    <i class="fa-solid fa-chevron-left fa-rotate-180"></i>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="product-image">
+                <img src="./ramdomDSLR.jpg" id="display-image" alt="DSLR image">
+
+                <div class="more-images" alt="some more images of product">
+                    <img id="one" src="./ramdomDSLR.jpg" onclick="imageChange('one')">
+                    <img id="two" src="./DSLR-2.png" onclick="imageChange('two')">
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis molestie nulla. Sed viverra
+                    urna eu diam porta, vitae condimentum ante vulputate. Aliquam aliquam eget sem nec lacinia.
+                    Pellentesque tincidunt lorem eget arcu varius volutpat. Quisque lacinia varius vestibulum.
+                    Pellentesque bibendum metus scelerisque, porttitor urna et, blandit velit. Phasellus vulputate urna
+                    nibh, nec auctor massa mattis quis. Phasellus vel auctor nibh.</p>
+            </div>
+            <div class="product-buy">
+                <h1>Product Name</h1>
+                <span id="product-id">ID: 1234 </span>
+                <h2 id="price-display">$14.99</h2>
+                <div class="quantity">
+                    <p>Quantity</p>
+                    <label for="quantity"></label>
+                    <input type="number" id="quantity" name="quantity" min="0">
+                </div>
+                <button type="button" id="btn-cart">Add to Cart</button>
+                <button type="button" id="btn-buy">Buy Now</button>
+                <div class="product-info">
+                    <h3>Product info</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget rutrum mi, et ultrices augue.
+                        Nunc condimentum risus dui. Donec cursus, lacus sed blandit feugiat, felis erat volutpat justo,
+                        sit amet viverra mauris neque ac nibh. Donec eget lectus ante. Nam ac tellus ut velit
+                        condimentum sollicitudin. Ut viverra sed neque vitae consequat. Interdum et malesuada fames ac
+                        ante ipsum primis in faucibus. Nunc eu turpis id massa feugiat blandit et vitae ligula. Praesent
+                        eget commodo ante. Duis ultrices efficitur posuere.
+                    </p>
+                </div>
+                <hr>
+                <div class="product-info">
+                    <h3>Return and Refund Policy</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget rutrum mi, et ultrices augue.
+                        Nunc condimentum risus dui. Donec cursus, lacus sed blandit feugiat, felis erat volutpat justo,
+                        sit amet viverra mauris neque ac nibh. Donec eget lectus ante. Nam ac tellus ut velit
+                        condimentum sollicitudin. Ut viverra sed neque vitae consequat. Interdum et malesuada fames ac
+                        ante ipsum primis in faucibus. Nunc eu turpis id massa feugiat blandit et vitae ligula. Praesent
+                        eget commodo ante. Duis ultrices efficitur posuere.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact-info">
+                <h1>Contact Us</h1>
+                <p>500 Terry Francine Street San Francisco<br>
+
+                    CA 94158 Tel: 123-456-7890
+
+                </p>
+                <p>info@mysite.com</p>
+            </div>
+            <div class="customer-care-info">
+                <h1>Customer Service</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget rutrum mi, et ultrices augue.
+                    Nunc condimentum risus dui. Donec cursus, lacus sed blandit feugiat
+                </p>
+            </div>
+            <div class="payment-info">
+                <h1>We Accept</h1>
+                <img src="./mastercard.webp" alt="mastercard logo">
+                <img src="./visa.webp" alt="visas logo">
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
