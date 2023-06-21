@@ -30,12 +30,12 @@ function WhiteH() {
         })
         
         const dataRes = await fetchData.json()
-        console.log(dataRes)
         
         if(!dataRes.message)
         {
-            console.log('success');
-            navigate('/product');
+         
+            
+            navigate(`/products/${dataRes.name}`);
         }
     }
 
