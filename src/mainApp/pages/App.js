@@ -12,12 +12,14 @@ import Body from "../components/Body";
 import Services from "../components/Services"
 import Footer from "../components/Footer"
 import P_App from './P_App'
+import WhiteH from "../components/WhiteH";
+import GreenH from "../components/GreenH";
 
 function App() {
   return (
     <div>
-      <HeaderTop />
-      {/* <ImageC /> */}
+      <GreenH />
+      <WhiteH />
       <Body />
       <TopCat />
       <Cashback />
