@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 function P_App() {
     return (
       <div>
-        <HeaderTop />
+        {/* <HeaderTop /> */}
         <P_MainC />
         <Footer />
       </div>

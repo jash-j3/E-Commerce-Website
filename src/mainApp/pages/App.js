@@ -18,8 +18,8 @@ import GreenH from "../components/GreenH";
 function App() {
   return (
     <div>
-      <GreenH />
-      <WhiteH />
+      {/* <GreenH />
+      <WhiteH /> */}
       <Body />
       <TopCat />
       <Cashback />
@@ -33,7 +33,7 @@ function App() {
       <Deals text="Services To Help You Shop" />
       <Services />
       <Footer />
-      <P_App />
+      {/* <P_App /> */}
     </div>
   );
 }
