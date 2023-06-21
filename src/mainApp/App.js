@@ -12,6 +12,7 @@ import Bgimg from "./Bgimg";
 import Body from "./Body";
 import Services from "./Services"
 import Footer from "./Footer"
+import P_App from './P_App'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Deals text="Services To Help You Shop" />
       <Services />
       <Footer />
+      <P_App />
     </div>
   );
 }
