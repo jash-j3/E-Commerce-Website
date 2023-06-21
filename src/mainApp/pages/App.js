@@ -1,17 +1,16 @@
 import React from "react";
 import "./App.css";
-import HeaderTop from "./HeaderTop";
-import ImageC from "./ImageC";
-import TopCat from "./TopCat";
-import Deals from "./Deals";
-import Carou from "./Carou";
-import Cashback from "./Cashback";
-import Brands from "./Brands";
-import Upto from "./Upto";
-import Bgimg from "./Bgimg";
-import Body from "./Body";
-import Services from "./Services"
-import Footer from "./Footer"
+import HeaderTop from "../components/HeaderTop";
+import TopCat from "../components/TopCat";
+import Deals from "../components/Deals";
+import Carou from "../components/Carou";
+import Cashback from "../components/Cashback";
+import Brands from "../components/Brands";
+import Upto from "../components/Upto";
+import Bgimg from "../components/Bgimg";
+import Body from "../components/Body";
+import Services from "../components/Services"
+import Footer from "../components/Footer"
 import P_App from './P_App'
 
 function App() {

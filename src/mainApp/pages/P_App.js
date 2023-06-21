@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import HeaderTop from "./HeaderTop";
+import HeaderTop from "../components/HeaderTop";
 import P_MainC from "./P_MainC";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 function P_App() {
     return (

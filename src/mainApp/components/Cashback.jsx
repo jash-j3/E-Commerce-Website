@@ -12,7 +12,7 @@ function Cashback() {
       <div className="addtocart"><a href=""><div>Shop Now!</div></a></div>
 
       </div>
-      <img id="crdit" src={require("./images/crdit.png")} alt="headphone"></img>
+      <img id="crdit" src={require("../images/crdit.png")} alt="headphone"></img>
     </div>
   );
 }
