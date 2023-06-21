@@ -4,10 +4,12 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import "./HeaderTop.css";
-
+import { Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useNavigate } from 'react-router-dom';
 
 let searchQuery='';
 function WhiteH() {
+  const navigate = useNavigate()
     
     // const [searchQuery, setSearchQuery] = useState("");
     // function handleChange(event) {
@@ -18,7 +20,7 @@ function WhiteH() {
     
     const handleChange = async(event)=>{
       event.preventDefault()
-      
+        if(event.key !== "Enter") return;
         const fetchData = await fetch(`http://localhost:3001/products/find/`,{
           method : "POST",
           headers : {
@@ -26,9 +28,15 @@ function WhiteH() {
           },
           body : JSON.stringify({name:event.target.value})
         })
-  
+        
         const dataRes = await fetchData.json()
         console.log(dataRes)
+        
+        if(!dataRes.message)
+        {
+            console.log('success');
+            navigate('/product');
+        }
     }
 
   return (
@@ -59,14 +67,16 @@ function WhiteH() {
         </div>
         <div className="iconss">
           <div className="searchbar">
-            <AccountCircleOutlinedIcon /> <div className="acc-txt"><a href="">Account</a></div>
+            
+            <Link to= '/product'><AccountCircleOutlinedIcon /> </Link>
+            </div>
+  
+          <div className="searchbar">
+             <a href=""> <FavoriteBorderIcon /> </a>
           </div>
           <div className="searchbar">
-            <FavoriteBorderIcon /> <div className="acc-txt"><a href="">Wishlist</a></div>
-          </div>
-          <div className="searchbar">
-            <ShoppingCartOutlinedIcon /> <div className="acc-txt"><a href="">Cart</a></div>
-          </div>
+            <a href=""><ShoppingCartOutlinedIcon /> </a>
+          </div>                         
         </div>
       </div>
   )
