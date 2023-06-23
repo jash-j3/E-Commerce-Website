@@ -51,6 +51,26 @@ const productSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    Five:{
+        type: Number,
+        default: 0,
+    },
+    Four:{
+        type: Number,
+        default: 0,
+    },
+    Three:{
+        type: Number,
+        default: 0,
+    },
+    Two:{
+        type: Number,
+        default: 0,
+    },
+    One:{
+        type: Number,
+        default: 0,
+    },
     dateCreated: {
         type: Date,
         default: Date.now,

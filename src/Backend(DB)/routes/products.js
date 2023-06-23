@@ -71,10 +71,15 @@ router.post(`/new`, async (req, res) =>{
         brand: req.body.brand,
         price: req.body.price,
         category: req.body.category,
-        countInStock: Number(req.body.countInStock),
+        countInStock: req.body.countInStock,
         rating: req.body.rating,
         numReviews: req.body.numReviews,
         isFeatured: req.body.isFeatured,
+        Five: req.body.Five,
+        Four: req.body.Four,
+        Three: req.body.Three,
+        Two: req.body.Two,
+        One: req.body.One,
     })
 
     product = await product.save();
