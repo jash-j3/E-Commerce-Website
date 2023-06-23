@@ -10,11 +10,13 @@ import {
 import App from './mainApp/pages/App';
 import P_App from './mainApp/pages/P_App';
 import HeaderTop from './mainApp/components/HeaderTop';
+import Signup from './mainApp/pages/signup';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<HeaderTop />}>
       <Route index element={<App />} />
+      <Route path='/signup' element={<Signup />} />
     <Route path="/products/:name" element={<P_App />} />
       </Route>
     )

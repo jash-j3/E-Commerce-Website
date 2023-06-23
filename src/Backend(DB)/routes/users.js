@@ -11,4 +11,21 @@ router.get(`/`, async (req, res) =>{
     res.send(userList);
 })
 
+router.post(`/signup`, async(req,res) =>{
+
+    let user = new User({
+        fName: req.body.fName,
+        lName: req.body.lName,
+        email: req.body.email,
+        pass: req.body.pass,
+    })
+
+    user = await user.save();
+
+    if(!user) 
+    return res.status(500).send('The user cannot be created')
+
+    res.send(user);
+})
+
 module.exports =router;
