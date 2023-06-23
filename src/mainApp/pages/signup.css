@@ -70,6 +70,25 @@
     
 }
 
+.asterix{
+    color: red;
+    font-weight: 300;
+    font-size: 18px;
+    position: relative;
+    bottom: 3px;
+    left: 2px;
+    line-height: 22px;
+}
+
+.asterix1{
+    color: red;
+    font-weight: 300;
+    font-size: 18px;
+    position: relative;
+    bottom: 3px;
+    line-height: 22px;
+}
+
 .wrap{
     margin-bottom: 35px;
     font-size: 16px;
@@ -113,6 +132,16 @@
     background: rgb(252,13,255);
 
 }
+
+.toast-span{
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.toast-span:hover{
+    color: rgb(43, 169, 205);
+}
+
 i{
     transform: translateY(230%);
 }
@@ -120,6 +149,6 @@ i{
     display: flex;
     justify-content: space-between;
 }
-#view-pwd:hover{
+#view-pwd:hover,.toast-span:hover{
     cursor: pointer;
 }

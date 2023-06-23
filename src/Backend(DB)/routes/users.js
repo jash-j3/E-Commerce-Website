@@ -14,24 +14,35 @@ router.get(`/`, async (req, res) => {
 });
 
 router.post(`/signup`, async (req, res) => {
-  bcrypt.hash(req.body.pass, saltRounds).then(async function (hash) {
-    let user = new User({
-      fName: req.body.fName,
-      lName: req.body.lName,
-      email: req.body.email,
-      pass: hash,
-    });
-
-    user = await user.save();
-    if (!user) {return res.status(500).send({
-        message: "Can't Sign in",
+  const { email } = req.body;
+  User.findOne({ email: email }, (err, result) => {
+    if (result) {
+      res.send({
+        message: "Email already exists.",
         alert: false,
       });
-}
-    res.send({
-        message: "Signup Successful",
-        alert: true,
+    } else {
+      bcrypt.hash(req.body.pass, saltRounds).then(async function (hash) {
+        let user = new User({
+          fName: req.body.fName,
+          lName: req.body.lName,
+          email: req.body.email,
+          pass: hash,
+        });
+
+        user = await user.save();
+        if (!user) {
+          return res.status(500).send({
+            message: "Can't Sign in",
+            alert: false,
+          });
+        }
+        res.send({
+          message: "Signup Successful",
+          alert: true,
+        });
       });
+    }
   });
 });
 
@@ -55,15 +66,13 @@ router.post("/login", (req, res) => {
             alert: true,
             data: dataSend,
           });
-        }
-        else{
-            res.send({
-                message: "Password incorrect",
-                alert: false,
-              });
+        } else {
+          res.send({
+            message: "Password incorrect",
+            alert: false,
+          });
         }
       });
-      
     } else {
       res.send({
         message: "Email is not available, please sign up",

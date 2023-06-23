@@ -4,9 +4,9 @@ import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from '../components/Footer'
+import toast, { Toaster } from 'react-hot-toast';
 
 function Signup() {
-  const element = <FontAwesomeIcon icon={faUser} />;
   const navigate = useNavigate();
   const [data, setData] = useState({
     fName: "",
@@ -15,6 +15,32 @@ function Signup() {
     pass: "",
     cpass: "",
   });
+  const notify_emae = () => toast.error((t) => (
+    <span>
+      Email already exists, <span className="toast-span" onClick={() => navigate("/login")}>Login Instead</span>
+    </span>
+  ),{style: {
+    borderRadius: '10px',
+    background: '#333',
+    color: '#fff',
+  }});
+  const notify_faf = () => toast.error((t) => (
+    <span> Please fill all the required (<span className="asterix1">*</span>) fields.
+    </span>
+  ),{style: {
+    borderRadius: '10px',
+    background: '#333',
+    color: '#fff',
+  }});
+  const notify_pnm = () => toast.error((t) => (
+    <span>
+      The passwords don't match.
+    </span>
+  ),{style: {
+    borderRadius: '10px',
+    background: '#333',
+    color: '#fff',
+  }});
   function onChange(e) {
     const { name, value } = e.target;
     setData((previous) => ({ ...previous, [name]: value }));
@@ -22,7 +48,7 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     const { fName, lName, email, pass, cpass } = data;
-    if (fName && lName && email && pass && cpass) {
+    if (fName && email && pass && cpass) {
       if (pass === cpass) {
         const fetchData = await fetch(`http://localhost:3001/users/signup`, {
           method: "POST",
@@ -37,7 +63,16 @@ function Signup() {
         if (dataRes.alert) {
           navigate("/login");
         }
+        else{
+          notify_emae();
+        }
       }
+      else{
+        notify_pnm();
+      }
+    }
+    else{
+      notify_faf();
     }
   }
   return (
@@ -52,7 +87,7 @@ function Signup() {
                   <FontAwesomeIcon icon={faUser} />
                 </i>
                 <label htmlFor="fName">
-                  <h2>First Name</h2>
+                  <h2>First Name<span className="asterix">*</span></h2>
                 </label>
                 <input
                   type={"text"}
@@ -84,7 +119,7 @@ function Signup() {
                   <FontAwesomeIcon icon={faEnvelope} />
                 </i>
                 <label htmlFor="email">
-                  <h2>Email ID</h2>
+                  <h2>Email ID<span className="asterix">*</span></h2>
                 </label>
                   <input
                     type={"email"}
@@ -100,7 +135,7 @@ function Signup() {
                   <FontAwesomeIcon icon={faLock} />
                 </i>
                 <label htmlFor="pass">
-                  <h2>Password</h2>
+                  <h2>Password<span className="asterix">*</span></h2>
                 </label>
                 <input
                   type={"password"}
@@ -116,7 +151,7 @@ function Signup() {
                   <FontAwesomeIcon icon={faLock} />
                 </i>
                 <label htmlFor="cpass">
-                  <h2>Confirm Password</h2>
+                  <h2>Confirm Password<span className="asterix">*</span></h2>
                 </label>
                 <input
                     type={"password"}
@@ -130,12 +165,13 @@ function Signup() {
               <h3>
                 Already a User? Login <Link to='/login' className="linktologin">Here</Link>
               </h3>
-              <button>LOGIN</button>
+              <button>SIGN UP</button>
           </div>
         </div>
             </form>
       </div>
       <Footer />
+      <Toaster />
     </div>
   );
 }

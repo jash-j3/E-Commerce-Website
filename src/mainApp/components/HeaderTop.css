@@ -38,7 +38,7 @@
     top: 0px;
     background-color: white;
     height: 100%;
-    z-index: 099999999999;
+    z-index: 1;
 }
 
 .whiteH h1{

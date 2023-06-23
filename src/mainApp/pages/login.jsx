@@ -4,6 +4,7 @@ import './login.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from '../components/Footer'
+import { Toaster, toast } from 'react-hot-toast';
 
 function Login() {
     const navigate = useNavigate();
@@ -11,6 +12,15 @@ function Login() {
         email: "",
         pass: "",
       });
+      const notify_nu = () => toast.error((t) => (
+        <span>
+          Account dosen't exist, <span className="toast-span" onClick={() => navigate("/signup")}>Signup Instead</span>
+        </span>
+      ),{style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }});
       function onChange(e) {
         const { name, value } = e.target;
         setData((previous) => ({ ...previous, [name]: value }));
@@ -33,9 +43,10 @@ function Login() {
               const dataRes = await fetchData.json();
               console.log(dataRes);
               if (dataRes.alert) {
-                setTimeout(() => {
-                    navigate("/");
-                  }, 1000);
+                navigate("/");
+              }
+              else{
+                notify_nu();
               }
         }
       }
@@ -82,12 +93,13 @@ function Login() {
               <h3>
                 New? Signup <Link to='/signup' className="linktologin">Here</Link>
               </h3>
-              <button>SIGN UP</button>
+              <button>LOGIN</button>
           </div>
         </div>
             </form>
       </div>
       <Footer />
+      <Toaster />
     </div>
   )
 }
