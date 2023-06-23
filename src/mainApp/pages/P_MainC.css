@@ -152,7 +152,7 @@ button{
     background-color: rgb(31, 31, 31, 0.8);
 }
 .product-info{
-    margin: 40px 40% 30px 0px;
+    margin: 60px 40% 30px 0px;
 }
 .product-info>h3{
     font-size: 25px;
@@ -187,4 +187,9 @@ hr{
 }
 .footer>div{
     flex-basis: 33%;
+}
+
+.ratings{
+    text-align: left;
+    width: max-content;
 }

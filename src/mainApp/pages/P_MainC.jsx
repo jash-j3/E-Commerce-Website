@@ -45,46 +45,29 @@ function P_MainC() {
             <div class="left"><Link to='/'>Home</Link> /
                 <span id="product-name">{data.name}</span>
             </div>
-
-            <div class="right">
-                <a href="#"><i class="fa-solid fa-chevron-left"></i>
-                    Prev</a>
-                |
-                <a href="#">Next
-                    <i class="fa-solid fa-chevron-left fa-rotate-180"></i>
-                </a>
-            </div>
         </div>
         <div class="main-content">
             <div class="product-image">
-                <img src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5537881bbfcf_instax%20mini%209-min.png" id="display-image" alt="DSLR image"></img>
-
-                <div class="more-images" alt="some more images of product">
-                    <img id="one" src="https://uploads-ssl.webflow.com/63e857eaeaf853471d5335ff/63e8c4e563db5537881bbfcf_instax%20mini%209-min.png" onclick="imageChange('one')"></img>
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis molestie nulla. Sed viverra
-                    urna eu diam porta, vitae condimentum ante vulputate. Aliquam aliquam eget sem nec lacinia.
-                    Pellentesque tincidunt lorem eget arcu varius volutpat. Quisque lacinia varius vestibulum.
-                    Pellentesque bibendum metus scelerisque, porttitor urna et, blandit velit. Phasellus vulputate urna
-                    nibh, nec auctor massa mattis quis. Phasellus vel auctor nibh.</p>
+                <img src= {data.image} id="display-image" alt="DSLR image"></img>
+                {/* <div class = 'ratings' >
+                    <h1> Ratings</h1>
+                </div> */}
             </div>
             <div class="product-buy">
                 <h1>{data.name}</h1>
                 <span id="product-id">ID: {data.id} </span>
-                <h2 id="price-display">${data.price}</h2>
+                <h2 id="price-display">&#8377;{data.price}</h2>
                 <div class="quantity">
                     <p>Quantity</p>
                     <label for="quantity"></label>
-                    <input type="number" id="quantity" name="quantity" min="1" placeholder='1'></input>
+                    <input type="number" id="quantity" name="quantity" min="1" placeholder='1'max = {data.countInStock}></input>
                 </div>
                 <button type="button" id="btn-cart">Add to Cart</button>
                 <button type="button" id="btn-buy">Buy Now</button>
                 <div class="product-info">
                     <h3>Product info</h3>
-                    <p>Here , description comes.<br></br>
-                        {data.description}<br />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis illum commodi velit optio unde et! Quibusdam eos dolor natus facilis quas aut consectetur architecto! Facere aperiam dolorum architecto repudiandae ab.
+                    <p>
+                        {data.description}
                     </p>
                 </div>
                 <hr></hr>
