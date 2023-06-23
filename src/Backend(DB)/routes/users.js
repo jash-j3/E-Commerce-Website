@@ -23,8 +23,53 @@ router.post(`/signup`, async (req, res) => {
     });
 
     user = await user.save();
-    if (!user) return res.status(500).send("The user cannot be created");
-    res.send(user);
+    if (!user) {return res.status(500).send({
+        message: "Can't Sign in",
+        alert: false,
+      });
+}
+    res.send({
+        message: "Signup Successful",
+        alert: true,
+      });
+  });
+});
+
+router.post("/login", (req, res) => {
+  // console.log(req.body);
+  const { email, pass } = req.body;
+  User.findOne({ email: email }, (err, result) => {
+    if (result) {
+      bcrypt.compare(pass, result.pass).then(function (result_pass) {
+        if (result_pass) {
+          // result == true'
+          const dataSend = {
+            _id: result._id,
+            fName: result.firstName,
+            lName: result.lastName,
+            email: result.email,
+          };
+          console.log(dataSend);
+          res.send({
+            message: "Login is successful",
+            alert: true,
+            data: dataSend,
+          });
+        }
+        else{
+            res.send({
+                message: "Password incorrect",
+                alert: false,
+              });
+        }
+      });
+      
+    } else {
+      res.send({
+        message: "Email is not available, please sign up",
+        alert: false,
+      });
+    }
   });
 });
 

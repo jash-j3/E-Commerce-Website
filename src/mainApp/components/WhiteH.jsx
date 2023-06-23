@@ -33,17 +33,17 @@ function WhiteH() {
         
         if(!dataRes.message)
         {
-         
-            
             navigate(`/products/${dataRes.name}`);
         }
     }
 
   return (
     <div className="whiteH">
-        <div>
-          <h1>JcubeStore</h1>
-        </div>
+        <Link to="/">
+          <div>
+            <h1>JcubeStore</h1>
+          </div>
+        </Link>
         <div className="dwd">
           <div>
             <a href="">Deals</a>
@@ -68,7 +68,7 @@ function WhiteH() {
         <div className="iconss">
           <div className="searchbar">
             
-            <Link to= '/product'><AccountCircleOutlinedIcon /> </Link>
+            <Link to= '/login'><AccountCircleOutlinedIcon /> </Link>
             </div>
   
           <div className="searchbar">

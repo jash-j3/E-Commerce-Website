@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 function Signup() {
-  // useNavigate();
+  const navigate = useNavigate();
   const [data, setData] = useState({
     fName: "",
     lName: "",
@@ -29,6 +29,10 @@ function Signup() {
         });
 
         const dataRes = await fetchData.json();
+        console.log(dataRes);
+        if (dataRes.alert) {
+          navigate('/login');
+        }
       }
     }
   }
@@ -77,6 +81,8 @@ function Signup() {
         />
         <button>Submit</button>
       </form>
+      <Link to= '/login'>
+      <button>Already joined our fam? Login</button></Link>
     </div>
   );
 }
