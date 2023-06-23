@@ -1,11 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .container-sgnp{
     background-image: url("https://colorlib.com/etc/lf/Login_v4/images/bg-01.jpg");
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: auto;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -16,17 +12,24 @@
 .login-box{
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    height: 912px;
     width: 500px;
     padding: 65px 55px 54px;
     box-shadow: 5px 5px 40px black;
-    margin: 40px 0;
+    margin: 30px 0;
 }
+
+
 .login-content{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+}
+
+.login-content i{
+    position: relative;
+    top: 38.5px;
+    font-size: 15px;
 }
 .login-box>.login-content>h1{
     text-align: center;
@@ -36,12 +39,14 @@
     padding-bottom: 49px;
     width: 100%;
 }
-.login-box>.login-content>h2{
+.login-box>.login-content h2{
     color: #333333;
-    font-size: 15px;
+    font-size: 22px;
     font-family: 'Poppins-regular', sans-serif;
     align-self: flex-start;
-    padding-left: 7px;
+    display: inline;
+    position: relative;
+    right: 15px;
 }
 .login-box>.login-content input{
     border-top: 0;
@@ -66,7 +71,7 @@
 }
 
 .wrap{
-    margin-bottom: 23px;
+    margin-bottom: 35px;
     font-size: 16px;
     width: 390px;
 }
