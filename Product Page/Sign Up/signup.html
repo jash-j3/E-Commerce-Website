@@ -41,13 +41,19 @@
                         <input type="text" name="username" id="username" placeholder="Choose your Username">
                     </label>
                 </div>
-                <div class="wrap-password">
+                <div class="wrap">
                     <h2>Password</h2>
-                    <span><i class="fa-solid fa-lock"></i></span>
+                    <span class="pwd-icons"><i class="fa-solid fa-lock"></i><i id="view-pwd" class="fa-solid fa-eye-slash"></i></span>
                     <label for="password">
                         <input type="password" name="password" id="password" placeholder="Choose your Password">
                     </label>
-                    
+                </div>
+                <div class="wrap-password">
+                    <h2>Confirm Password</h2>
+                    <span class="pwd-icons"><i class="fa-solid fa-lock"></i><a href="#"><i id="view-pwd" class="fa-solid fa-eye-slash"></i></a></span>
+                    <label for="confirm-password">
+                        <input type="text" name="confirm-password" id="confirm-password" placeholder="Confirm your Password">
+                    </label>
                 </div>
                 <h3>Already a User? Login in <a href="#">Here</a></h3>
                 <button type="button" >LOGIN</button>
