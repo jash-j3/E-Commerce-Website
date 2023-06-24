@@ -34,6 +34,7 @@ function WhiteH() {
         if(!dataRes.message)
         {
             navigate(`/products/${dataRes.name}`);
+            window.location.reload(0);
         }
     }
 

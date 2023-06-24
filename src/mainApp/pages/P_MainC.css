@@ -195,5 +195,52 @@ hr{
 
 .ratings{
     text-align: left;
-    width: max-content;
+    width: 80%;
+    margin-top: 10px;
+    margin-left: 3%;
+}
+
+/* .fa{
+    color: yellow;
+    width:20px;
+    margin-top: 10px;
+}
+.fa-star{
+    color: yellow;
+    width: 20px;
+} */
+.rate{
+    display: inline-block;
+    font-size:23px;
+    color: #ffff0090;
+    height: 20px;
+    margin-top:5px;
+}
+
+
+.rectangle{
+    display:inline-block;
+    background-color: #00000050;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 20px;
+    width: 80%;
+    border-radius: 3px;
+
+}
+.context{
+    display: inline-block;
+}
+
+.rect{
+    margin: 0;
+    animation-name: hello;
+    animation-timing-function: ease-out;
+    animation-duration: 1.5s;
+}
+@keyframes hello {
+    0%{width: 0%;}
+    100%{width: calc(width);}
 }
