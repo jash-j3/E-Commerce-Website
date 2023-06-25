@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import Footer from '../components/Footer'
-import toast, { Toaster } from 'react-hot-toast';
+import Footer from "../components/Footer";
+import toast, { Toaster } from "react-hot-toast";
 
 function Signup() {
   const navigate = useNavigate();
@@ -15,32 +15,49 @@ function Signup() {
     pass: "",
     cpass: "",
   });
-  const notify_emae = () => toast.error((t) => (
-    <span>
-      Email already exists, <span className="toast-span" onClick={() => navigate("/login")}>Login Instead</span>
-    </span>
-  ),{style: {
-    borderRadius: '10px',
-    background: '#333',
-    color: '#fff',
-  }});
-  const notify_faf = () => toast.error((t) => (
-    <span> Please fill all the required (<span className="asterix1">*</span>) fields.
-    </span>
-  ),{style: {
-    borderRadius: '10px',
-    background: '#333',
-    color: '#fff',
-  }});
-  const notify_pnm = () => toast.error((t) => (
-    <span>
-      The passwords don't match.
-    </span>
-  ),{style: {
-    borderRadius: '10px',
-    background: '#333',
-    color: '#fff',
-  }});
+  const notify_emae = () =>
+    toast.error(
+      (t) => (
+        <span>
+          Email already exists,{" "}
+          <span className="toast-span" onClick={() => navigate("/login")}>
+            Login Instead
+          </span>
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    );
+  const notify_faf = () =>
+    toast.error(
+      (t) => (
+        <span>
+          {" "}
+          Please fill all the required (<span className="asterix1">*</span>)
+          fields.
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    );
+  const notify_pnm = () =>
+    toast.error((t) => <span>The passwords don't match.</span>, {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
   function onChange(e) {
     const { name, value } = e.target;
     setData((previous) => ({ ...previous, [name]: value }));
@@ -62,32 +79,31 @@ function Signup() {
         console.log(dataRes);
         if (dataRes.alert) {
           navigate("/login");
-        }
-        else{
+        } else {
           notify_emae();
         }
-      }
-      else{
+      } else {
         notify_pnm();
       }
-    }
-    else{
+    } else {
       notify_faf();
     }
   }
   return (
     <div>
-      <div class="container-sgnp">
-            <form onSubmit={handleSubmit}>
-        <div class="login-box">
-          <div class="login-content">
-            <h1>Sign Up</h1>
-              <div class="wrap">
+      <div className="container-sgnp">
+        <form onSubmit={handleSubmit}>
+          <div className="login-box">
+            <div className="login-content">
+              <h1>Sign Up</h1>
+              <div className="wrap">
                 <i>
                   <FontAwesomeIcon icon={faUser} />
                 </i>
                 <label htmlFor="fName">
-                  <h2>First Name<span className="asterix">*</span></h2>
+                  <h2>
+                    First Name<span className="asterix">*</span>
+                  </h2>
                 </label>
                 <input
                   type={"text"}
@@ -98,7 +114,7 @@ function Signup() {
                   placeholder="We'll call you by that!"
                 />
               </div>
-              <div class="wrap">
+              <div className="wrap">
                 <i>
                   <FontAwesomeIcon icon={faUser} />
                 </i>
@@ -114,28 +130,32 @@ function Signup() {
                   placeholder="Ufff, too many formalities?"
                 />
               </div>
-              <div class="wrap">
+              <div className="wrap">
                 <i>
                   <FontAwesomeIcon icon={faEnvelope} />
                 </i>
                 <label htmlFor="email">
-                  <h2>Email ID<span className="asterix">*</span></h2>
+                  <h2>
+                    Email ID<span className="asterix">*</span>
+                  </h2>
                 </label>
-                  <input
-                    type={"email"}
-                    name="email"
-                    id="email"
-                    value={data.email}
-                    onChange={onChange}
-                    placeholder="Won't spam, Don't Worry!!"
-                  />
+                <input
+                  type={"email"}
+                  name="email"
+                  id="email"
+                  value={data.email}
+                  onChange={onChange}
+                  placeholder="Won't spam, Don't Worry!!"
+                />
               </div>
-              <div class="wrap">
+              <div className="wrap">
                 <i>
                   <FontAwesomeIcon icon={faLock} />
                 </i>
                 <label htmlFor="pass">
-                  <h2>Password<span className="asterix">*</span></h2>
+                  <h2>
+                    Password<span className="asterix">*</span>
+                  </h2>
                 </label>
                 <input
                   type={"password"}
@@ -146,29 +166,34 @@ function Signup() {
                   placeholder="Choose a Strong One!"
                 />
               </div>
-              <div class="wrap">
+              <div className="wrap">
                 <i>
                   <FontAwesomeIcon icon={faLock} />
                 </i>
                 <label htmlFor="cpass">
-                  <h2>Confirm Password<span className="asterix">*</span></h2>
+                  <h2>
+                    Confirm Password<span className="asterix">*</span>
+                  </h2>
                 </label>
                 <input
-                    type={"password"}
-                    name="cpass"
-                    id="cpass"
-                    value={data.cpass}
-                    onChange={onChange}
-                    placeholder="Make it Match the Strong One!"
-                  />
+                  type={"password"}
+                  name="cpass"
+                  id="cpass"
+                  value={data.cpass}
+                  onChange={onChange}
+                  placeholder="Make it Match the Strong One!"
+                />
               </div>
               <h3>
-                Already a User? Login <Link to='/login' className="linktologin">Here</Link>
+                Already a User? Login{" "}
+                <Link to="/login" className="linktologin">
+                  Here
+                </Link>
               </h3>
               <button>SIGN UP</button>
+            </div>
           </div>
-        </div>
-            </form>
+        </form>
       </div>
       <Footer />
       <Toaster />
