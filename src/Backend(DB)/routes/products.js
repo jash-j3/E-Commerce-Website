@@ -39,16 +39,35 @@ router.post('/' , async (req, res)=>
 router.post("/find", async (req, res) => {
     console.log(req.body);
     const { name } = req.body;
-  
-    Product.findOne({name:name}, (err, result) => {
-      console.log(result);
-      console.log(err);
-      if (result) {
-        res.send(result);
-      } else {
-        res.send({ message: "Cant find it"});
+    // const posts = await PostSchema.find({
+    //     $text: { $search: n },
+    //   });
+    const posts=await Product.aggregate([
+        {
+          $search: {
+            index: "default",
+            text: {
+              query: name,
+              path: {
+                wildcard: "*"
+              }
+            }
+          }
+        }
+      ]);
+      console.log(posts);
+      if (posts.length > 0) {
+        res.send(posts[0]);
       }
-    });
+    // Product.findOne({name:name}, (err, result) => {
+    //   console.log("result"+result);
+    //   console.log(err);
+    //   if (result) {
+    //     res.send(result);
+    //   } else {
+    //     res.send({ message: "Cant find it"});
+    //   }
+    // });
   });
 router.get(`/:id`, async (req, res) =>{
     const product = await Product.findById(req.body.id).populate('category');

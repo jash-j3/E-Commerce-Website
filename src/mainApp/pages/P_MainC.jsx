@@ -73,7 +73,7 @@ function P_MainC() {
             </div>
             <div class="product-buy">
                 <h1>{data.name}</h1>
-                <span id="product-id">ID: {data.id} </span>
+                <span id="product-id">ID: {data._id} </span>
                 <h2 id="price-display">&#8377;{data.price}</h2>
                 <div class="quantity">
                     <p>Quantity</p>
