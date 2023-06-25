@@ -21,21 +21,22 @@ function WhiteH() {
     const handleChange = async(event)=>{
       event.preventDefault()
         if(event.key !== "Enter") return;
-        const fetchData = await fetch(`http://localhost:3001/products/find/`,{
-          method : "POST",
-          headers : {
-            "content-type" : "application/json"
-          },
-          body : JSON.stringify({name:event.target.value})
-        })
+        // const fetchData = await fetch(`http://localhost:3001/products/find/`,{
+        //   method : "POST",
+        //   headers : {
+        //     "content-type" : "application/json"
+        //   },
+        //   body : JSON.stringify({name:event.target.value})
+        // })
         
-        const dataRes = await fetchData.json()
-        
-        if(!dataRes.message)
-        {
-            navigate(`/products/${dataRes.name}`);
+        // const dataRes = await fetchData.json()
+        navigate(`/products/${event.target.value}`);
             window.location.reload(0);
-        }
+        // if(!dataRes.message)
+        // {
+        //     navigate(`/products/${dataRes.name}`);
+        //     window.location.reload(0);
+        // }
     }
 
   return (

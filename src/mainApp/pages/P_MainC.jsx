@@ -4,6 +4,7 @@ import { Product } from '../../Backend(DB)/models/product'
 import {useParams} from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Height } from '@mui/icons-material';
 
 async function dataReturn(params)
 {
@@ -20,7 +21,8 @@ async function dataReturn(params)
         return dataRes;
 }
 function P_MainC() {
-    const params = useParams();
+  const params = useParams();
+
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ function P_MainC() {
   console.log(data);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div style={{"height":"90vh"}}>Loading...</div>;
   }
   return (
     <div>
