@@ -63,6 +63,55 @@
 .searchbar{
     display: flex;
     align-items: center;
+    position: relative;
+}
+
+.srch{
+    min-height: 100px;
+    max-height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 400px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.918);
+    z-index: 31;
+    top: 41px;
+    border: solid 0.5px black;
+    padding: 10px;
+}
+
+.srchproimg{
+    height: 40px;
+    max-width: 70px !important;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.srchimg{
+    height: 40px;
+    object-fit: contain;
+
+}
+
+.srchp{
+
+    font-size: 12px;
+}
+
+
+
+.srchpro{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.inv{
+    display: none;
 }
 
 .acc-txt{

@@ -64,12 +64,14 @@ router.post("/login", (req, res) => {
           res.send({
             message: "Login is successful",
             alert: true,
+            alertin:true,
             data: dataSend,
           });
         } else {
           res.send({
             message: "Password incorrect",
             alert: false,
+            alertin:true
           });
         }
       });
@@ -77,6 +79,7 @@ router.post("/login", (req, res) => {
       res.send({
         message: "Email is not available, please sign up",
         alert: false,
+        alertin:false
       });
     }
   });

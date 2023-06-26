@@ -37,28 +37,36 @@ router.post('/' , async (req, res)=>
 });
 
 router.post("/find", async (req, res) => {
-    console.log(req.body);
     const { name } = req.body;
+    console.log(name);
+    console.log("naameeeeee");
     // const posts = await PostSchema.find({
     //     $text: { $search: n },
     //   });
-    const posts=await Product.aggregate([
+    var posts;
+    if(name!=''&&name!=null){
+    posts=await Product.aggregate([
         {
-          $search: {
-            index: "default",
-            text: {
-              query: name,
-              path: {
-                wildcard: "*"
-              }
+            $search: {
+              "index": "default",
+              "autocomplete": {
+                "path": "name",
+                "query": name
+              },
+              "autocomplete": {
+                "path": "description",
+                "query": name
+              },
             }
-          }
-        }
+          },
       ]);
       console.log(posts);
       if (posts.length > 0) {
-        res.send(posts[0]);
+        res.send(posts);
       }
+      else{
+        res.send({alert:false})
+      }}
     // Product.findOne({name:name}, (err, result) => {
     //   console.log("result"+result);
     //   console.log(err);
@@ -81,7 +89,7 @@ router.get(`/:id`, async (req, res) =>{
 router.post(`/new`, async (req, res) =>{
     const category = await Category.findById(req.body.category);
     if(!category) return res.status(400).send('Invalid Category')
-
+    console.log(req.body);
     let product = new Product({
         name: req.body.name,
         description: req.body.description,

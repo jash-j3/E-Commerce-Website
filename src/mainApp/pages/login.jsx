@@ -34,6 +34,21 @@ function Login() {
         },
       }
     );
+    const notify_pi = () =>
+    toast.error(
+      (t) => (
+        <span>
+          Password Incorrect, Try Again.
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    );
   function onChange(e) {
     const { name, value } = e.target;
     setData((previous) => ({ ...previous, [name]: value }));
@@ -59,8 +74,14 @@ function Login() {
         }
         navigate("/");
         
-      } else {
-        notify_nu();
+      } 
+      else {
+        if (dataRes.alertin){
+          notify_pi();
+        }
+        else{
+          notify_nu();
+        }
       }
     }
   }

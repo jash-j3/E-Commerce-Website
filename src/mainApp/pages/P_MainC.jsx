@@ -17,7 +17,7 @@ async function dataReturn(params) {
 
   const dataRes = await fetchData.json();
   console.log(dataRes);
-  return dataRes;
+  return dataRes[0];
 }
 function P_MainC() {
   const params = useParams();
