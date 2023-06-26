@@ -5,7 +5,7 @@ import Carou from "./Carou";
 
 function Body() {
   return (
-    <>
+  
       <div className="bodyDiv">
         <div className="transparent-div-black">
           <h1>ONE OF A KIND PRODUCTS</h1>
@@ -13,7 +13,7 @@ function Body() {
           <h6>With the cheapest Prices!!!</h6>
         </div>
       </div>
-    </>
+  
   );
 }
 

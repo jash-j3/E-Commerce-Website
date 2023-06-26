@@ -5,9 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import { Toaster, toast } from "react-hot-toast";
+import { useSelector, useDispatch } from 'react-redux';
+import { decrement, increment } from './store';
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const count = useSelector((state) => state.loggedIn.value);
   const [data, setData] = useState({
     email: "",
     pass: "",
@@ -49,7 +53,12 @@ function Login() {
       const dataRes = await fetchData.json();
       console.log(dataRes);
       if (dataRes.alert) {
+        if(count=== 0)
+        {
+          dispatch(increment());
+        }
         navigate("/");
+        
       } else {
         notify_nu();
       }

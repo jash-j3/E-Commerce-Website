@@ -12,6 +12,8 @@ import P_App from "./mainApp/pages/P_App";
 import HeaderTop from "./mainApp/components/HeaderTop";
 import Signup from "./mainApp/pages/signup";
 import Login from "./mainApp/pages/login";
+import { Provider } from 'react-redux'
+import store from "./mainApp/pages/store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,4 +28,4 @@ const router = createBrowserRouter(
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={router} />);
+root.render(<Provider store = {store}><RouterProvider router = {router} /></Provider>);

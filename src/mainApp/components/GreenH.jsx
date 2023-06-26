@@ -1,8 +1,13 @@
 import React from 'react'
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
-
+import store from '../pages/store';
+import { useSelector, useDispatch } from 'react-redux';
+import {increment,decrement} from '../pages/store'
+import Log from './Log'
 
 function GreenH() {
+  
+ 
   return (
     <div className="greenH">
         <div className="phone">
@@ -10,9 +15,7 @@ function GreenH() {
           +91 94260 23104
         </div>
         <div>Get 50% Off on Selected Items | Shop Now</div>
-        <div>
-          <a href="">Login</a> | <a href="">Register</a>
-        </div>
+          <Log/>
       </div>
   )
 }

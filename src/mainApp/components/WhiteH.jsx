@@ -7,7 +7,10 @@ import "./HeaderTop.css";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Switch, Route, useNavigate } from 'react-router-dom';
 
+
 let searchQuery='';
+
+
 function WhiteH() {
   const navigate = useNavigate()
     
