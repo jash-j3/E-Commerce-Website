@@ -49,16 +49,33 @@ router.post("/find", async (req, res) => {
         {
             $search: {
               "index": "default",
-              "autocomplete": {
-                "path": "name",
-                "query": name
-              },
-              "autocomplete": {
-                "path": "description",
-                "query": name
-              },
+            //   "autocomplete": {
+            //       "path": "name",
+            //       "query": name
+            //     },
+                // "autocomplete": {
+                //   "path": "description",
+                //   "query": name
+                // },
+                'compound': {
+                    'should': [
+                        {
+                            'autocomplete': {
+                                'query': name, 
+                                'path': 'name'
+                            }
+                        }, 
+                        {
+                            'autocomplete': {
+                                'query': name, 
+                                'path': 'description'
+                            }
+                        }
+                    ], 
+                    'minimumShouldMatch': 1
+                }
             }
-          },
+        },
       ]);
       console.log(posts);
       if (posts.length > 0) {

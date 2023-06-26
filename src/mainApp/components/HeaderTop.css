@@ -69,7 +69,7 @@
 .srch{
     min-height: 100px;
     max-height: 450px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     width: 400px;
     position: absolute;
@@ -82,7 +82,6 @@
 
 .srchproimg{
     height: 40px;
-    max-width: 70px !important;
     min-width: 40px;
     display: flex;
     justify-content: center;

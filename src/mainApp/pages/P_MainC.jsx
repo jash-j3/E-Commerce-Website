@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Height } from "@mui/icons-material";
 
 async function dataReturn(params) {
+  
   const fetchData = await fetch(`http://localhost:3001/products/find/`, {
     method: "POST",
     headers: {
