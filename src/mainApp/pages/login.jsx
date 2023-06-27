@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { Toaster, toast } from "react-hot-toast";
 import { useSelector, useDispatch } from 'react-redux';
 import { decrement, increment } from './store';
+import { setToken } from "../components/Log";
 
 function Login() {
   const dispatch = useDispatch();
@@ -68,12 +69,9 @@ function Login() {
       const dataRes = await fetchData.json();
       console.log(dataRes);
       if (dataRes.alert) {
-        if(count=== 0)
-        {
-          dispatch(increment());
-        }
+        setToken(1);
         navigate("/");
-        
+        window.location.reload();
       } 
       else {
         if (dataRes.alertin){

@@ -3,18 +3,29 @@ import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import store from '../pages/store';
 import { useSelector, useDispatch } from 'react-redux';
 import {increment,decrement} from '../pages/store'
+import { counterSlice } from '../pages/store';
 
+function setToken(count)
+{
+    sessionStorage.setItem("Token" , count);
+    getToken();
+}
 
+function getToken()
+{
+  let x =  sessionStorage.getItem('Token');
+  console.log("Hello",x);
+  return x;
+}
 function Log()
 {
   const count = useSelector((state) => state.loggedIn.value);
   const dispatch = useDispatch();
-  console.log(count);
-  if(count === 1)
-  {console.log(count);
+  if( getToken() == 1)
+  {
     
     return(<div>
-      <button onClick  = {() =>{dispatch(decrement())}}>Logout</button> 
+      <button onClick  = {() => {setToken(0); window.location.reload();}}>Logout</button> 
     </div>)
   }
   else {
@@ -24,4 +35,5 @@ function Log()
   }
 }
 
+export {setToken};
 export default Log;

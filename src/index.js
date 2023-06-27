@@ -22,7 +22,6 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<Signup />} />
       <Route path='/login' element={<Login />} />
       <Route path="/products/:name" element={<P_App />} />
-
     </Route>
   )
 );
