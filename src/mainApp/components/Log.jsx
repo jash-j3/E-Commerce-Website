@@ -13,9 +13,9 @@ function Log()
   if(count === 1)
   {console.log(count);
     
-    // return(<div>
-    //   <button onClick  = {dispatch(decrement)}>Logout</button> 
-    // </div>)
+    return(<div>
+      <button onClick  = {() =>{dispatch(decrement())}}>Logout</button> 
+    </div>)
   }
   else {
     return(<div>
