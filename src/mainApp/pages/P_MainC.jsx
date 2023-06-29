@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Height } from "@mui/icons-material";
 import {loadStripe} from '@stripe/stripe-js';
-
+import { getToken } from "../components/Log";
+import toast, { Toaster } from "react-hot-toast";
+import { Navigate , useNavigate} from "react-router-dom";
 
 async function dataReturn(params) {
   
@@ -25,11 +27,31 @@ async function dataReturn(params) {
 
 
 
+
 function P_MainC() {
+const navigate = useNavigate();
+
   const params = useParams();
-
   const [data, setData] = useState(null);
-
+  const notify_log = () => {
+    const myToast = toast.error(
+      (t) => (
+        <span>
+          Please Login to Continue,{" "}
+          <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(myToast); }}>
+          Login
+        </span>
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    )
+  };
   useEffect(() => {
     const fetchData = async () => {
       const response = await dataReturn(params);
@@ -39,6 +61,11 @@ function P_MainC() {
     fetchData();
   }, [params]);
 
+  function handler(data1)
+  {
+    if(getToken() == 1) handleBuy(data1);
+    else notify_log();
+  }
   async function handleBuy(data1) {
     const stripePromise = await loadStripe('pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv')
           const res = await fetch(`http://localhost:3001/products/create-checkout-session`,{
@@ -175,7 +202,7 @@ function P_MainC() {
           <button type="button" id="btn-cart">
             Add to Cart
           </button>
-          <button type="button" id="btn-buy" onClick={()=>{handleBuy(data)}}>
+          <button type="button" id="btn-buy" onClick={()=>{handler(data)}}>
             Buy Now
           </button>
           <div className="product-info">
@@ -191,6 +218,7 @@ function P_MainC() {
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 }

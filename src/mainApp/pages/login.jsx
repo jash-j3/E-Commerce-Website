@@ -17,12 +17,12 @@ function Login() {
     email: "",
     pass: "",
   });
-  const notify_nu = () =>
-    toast.error(
+  const notify_nu = () =>{
+    const toastId = toast.error(
       (t) => (
         <span>
           Account dosen't exist,{" "}
-          <span className="toast-span" onClick={() => navigate("/signup")}>
+          <span className="toast-span" onClick={() => {navigate("/signup"); toast.dismiss(toastId);}}>
             Signup Instead
           </span>
         </span>
@@ -34,7 +34,7 @@ function Login() {
           color: "#fff",
         },
       }
-    );
+    )};
   const notify_pi = () =>
     toast.error((t) => <span>Password Incorrect, Try Again.</span>, {
       style: {

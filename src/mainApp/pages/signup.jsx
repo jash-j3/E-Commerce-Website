@@ -15,12 +15,12 @@ function Signup() {
     pass: "",
     cpass: "",
   });
-  const notify_emae = () =>
-    toast.error(
+  const notify_emae = () =>{
+    const toastId= toast.error(
       (t) => (
         <span>
           Email already exists,{" "}
-          <span className="toast-span" onClick={() => navigate("/login")}>
+          <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(toastId);}}>
             Login Instead
           </span>
         </span>
@@ -32,7 +32,7 @@ function Signup() {
           color: "#fff",
         },
       }
-    );
+    )};
   const notify_faf = () =>
     toast.error(
       (t) => (

@@ -16,7 +16,6 @@ function setToken(count)
 function getToken()
 {
   let x =  localStorage.getItem('Token');
-  console.log("Hello",x);
   return x;
 }
 function Log()
@@ -37,5 +36,5 @@ function Log()
   }
 }
 
-export {setToken};
+export {setToken, getToken};
 export default Log;
