@@ -3,8 +3,12 @@ const express = require('express');
 const { Category } = require('../models/category');
 const router = express.Router();
 const mongoose = require('mongoose');
+const Stripe = require("stripe");
+
 // const bodyParser = require('body-parser');
 // router.use(express.json());
+
+const stripe = new Stripe('sk_test_51NNfYPSFJzv4F3NJ3TzQ1iO2Mo1qpGHPNMi0M3NgRm7vrpFgd6yrRF9FUYTV6594pLuRnwBuvjGTeuvIngE6Dozd009c4HbfoR')
 
 router.get(`/`, async (req, res) =>{
     // res.send("Helo");
@@ -34,6 +38,49 @@ router.post('/' , async (req, res)=>
     } 
 
     res.send(productList);
+});
+
+router.post('/create-checkout-session' , async (req, res)=>
+{   
+    const items=[];
+    items[0]=req.body
+    console.log(items);
+    try {
+        const params = {
+          submit_type: "pay",
+          mode: "payment",
+          payment_method_types: ["card"],
+          billing_address_collection: "auto",
+        //   shipping_options: [{ shipping_rate: "shr_1N0qDnSAq8kJSdzMvlVkJdua" }],
+    
+          line_items: items.map((item) => {
+            return {
+              price_data: {
+                currency: "inr",
+                product_data: {
+                  name: item.name,
+                  // images : [item.image]
+                },
+                unit_amount: item.price * 100,
+              },
+              adjustable_quantity: {
+                enabled: true,
+                minimum: 1,
+              },
+              quantity: item.countInStock,
+            };
+          }),
+    
+          success_url: `http://localhost:3000/`,
+          cancel_url: `http://localhost:3000/`,
+        };
+    
+        const session = await stripe.checkout.sessions.create(params);
+        console.log(session)
+        res.status(200).json(session.id);
+      } catch (err) {
+        console.log(err);
+      }
 });
 
 router.post("/find", async (req, res) => {

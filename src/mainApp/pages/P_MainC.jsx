@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Height } from "@mui/icons-material";
+import {loadStripe} from '@stripe/stripe-js';
+
 
 async function dataReturn(params) {
   
@@ -37,8 +39,25 @@ function P_MainC() {
     fetchData();
   }, [params]);
 
-  console.log(params);
-  console.log(data);
+  async function handleBuy(data1) {
+    const stripePromise = await loadStripe('pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv')
+          const res = await fetch(`http://localhost:3001/products/create-checkout-session`,{
+            method : "POST",
+            headers  : {
+              "content-type" : "application/json"
+            },
+            body  : JSON.stringify(data1)
+          })
+          // if(res.statusCode === 500) return;
+
+          const data2 = await res.json()
+          // console.log(data)
+
+          // toast("Redirect to payment Gateway...!")
+          stripePromise.redirectToCheckout({sessionId : data2}) 
+  }
+
+
 
   if (!data) {
     return <div style={{ height: "90vh" }}>Loading...</div>;
@@ -156,7 +175,7 @@ function P_MainC() {
           <button type="button" id="btn-cart">
             Add to Cart
           </button>
-          <button type="button" id="btn-buy">
+          <button type="button" id="btn-buy" onClick={()=>{handleBuy(data)}}>
             Buy Now
           </button>
           <div className="product-info">
