@@ -41,7 +41,7 @@ function WhiteH() {
 
     setSearchedPro([dataRes]);
     if (event.key !== "Enter") return;
-    navigate(`/products/${dataRes[0].name}`);
+    if(dataRes[0]) navigate(`/products/${dataRes[0].name}`);
     window.location.reload(0);
     // if(!dataRes.message)
     // {

@@ -51,7 +51,7 @@ router.post('/create-checkout-session' , async (req, res)=>
           mode: "payment",
           payment_method_types: ["card"],
           billing_address_collection: "auto",
-        //   shipping_options: [{ shipping_rate: "shr_1N0qDnSAq8kJSdzMvlVkJdua" }],
+          shipping_options: [{ shipping_rate: "shr_1N0qDnSAq8kJSdzMvlVkJdua" }],
     
           line_items: items.map((item) => {
             return {
