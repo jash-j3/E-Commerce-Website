@@ -7,12 +7,12 @@ import "./HeaderTop.css";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Switch, Route, useNavigate } from "react-router-dom";
 
-let searchQuery = "";
 
 function WhiteH() {
   const navigate = useNavigate();
   const [isSearching, setIsSearching] = useState(true);
   const [searchedPro, setSearchedPro] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   // const [searchQuery, setSearchQuery] = useState("");
   // function handleChange(event) {
   //   fetch(`http://localhost:3001/products?name=${event.target.value}`).then(
@@ -20,9 +20,12 @@ function WhiteH() {
   //   );
   // }
 
+  const handler = async(event) =>{
+    event.preventDefault();
+    setSearchQuery(event.target.value);
+  }
   const handleChange = async (event) => {
     event.preventDefault();
-
     if (event.target.value != "") {
       setIsSearching(false);
     } else {
@@ -75,6 +78,8 @@ function WhiteH() {
           className="input-box"
           id="searcher"
           onKeyUp={handleChange}
+          onInput = {handler}
+          value = {searchQuery}
         ></input>
         <SearchIcon />
         <div className="srch" style={isSearching ? { display: "none" } : {}}>
@@ -84,7 +89,7 @@ function WhiteH() {
                   let lnk = `/products/id/${p._id}`;
                   return (
                     <div>
-                      <Link to={lnk}>
+                      <Link to={lnk} onClick = {() => {setIsSearching(1); setSearchQuery('');}}>
                         <div className="srchpro">
                           <div className="srchproimg">
                             <img
@@ -130,4 +135,3 @@ function WhiteH() {
 }
 
 export default WhiteH;
-export { searchQuery };
