@@ -1,28 +1,26 @@
 import React from "react";
 import "./P_MainC.css";
-import { Product } from "../../Backend(DB)/models/product";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Height } from "@mui/icons-material";
 import {loadStripe} from '@stripe/stripe-js';
 import { getToken } from "../components/Log";
 import toast, { Toaster } from "react-hot-toast";
 import { Navigate , useNavigate} from "react-router-dom";
 
 async function dataReturn(params) {
-  
-  const fetchData = await fetch(`http://localhost:3001/products/find/`, {
+  const id=params.id
+  const fetchData = await fetch(`http://localhost:3001/products/id/${id}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
-    body: JSON.stringify({ name: params.name }),
+    body: JSON.stringify({ id: id}),
   });
 
   const dataRes = await fetchData.json();
   console.log(dataRes);
-  return dataRes[0];
+  return dataRes;
 }
 
 

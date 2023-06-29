@@ -41,7 +41,7 @@ function WhiteH() {
 
     setSearchedPro([dataRes]);
     if (event.key !== "Enter") return;
-    if(dataRes[0]) navigate(`/products/${dataRes[0].name}`);
+    if(dataRes[0]) navigate(`/products/id/${dataRes[0]._id}`);
     window.location.reload(0);
     // if(!dataRes.message)
     // {
@@ -81,7 +81,7 @@ function WhiteH() {
           {searchedPro[0] && searchedPro[0].length > 0
             ? searchedPro[0].map((p) => {
                 if (p) {
-                  let lnk = `/products/${p.name}`;
+                  let lnk = `/products/id/${p._id}`;
                   return (
                     <div>
                       <Link to={lnk}>

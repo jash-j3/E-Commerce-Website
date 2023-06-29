@@ -141,6 +141,17 @@ router.post("/find", async (req, res) => {
     //   }
     // });
   });
+
+  router.post(`/id/:id`,async(req,res)=>{
+    console.log(req.body.id);
+    console.log("id yhi hai");
+    const product = await Product.findById(req.body.id).populate('category');
+
+    if(!product) {
+        res.status(500).json({success: false})
+    } 
+    res.send(product);
+  })
 router.get(`/:id`, async (req, res) =>{
     const product = await Product.findById(req.body.id).populate('category');
 
