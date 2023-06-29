@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import { Toaster, toast } from "react-hot-toast";
-import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from './store';
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "./store";
 import { setToken } from "../components/Log";
 
 function Login() {
@@ -35,21 +35,14 @@ function Login() {
         },
       }
     );
-    const notify_pi = () =>
-    toast.error(
-      (t) => (
-        <span>
-          Password Incorrect, Try Again.
-        </span>
-      ),
-      {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-      }
-    );
+  const notify_pi = () =>
+    toast.error((t) => <span>Password Incorrect, Try Again.</span>, {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
   function onChange(e) {
     const { name, value } = e.target;
     setData((previous) => ({ ...previous, [name]: value }));
@@ -72,12 +65,10 @@ function Login() {
         setToken(1);
         navigate("/");
         window.location.reload();
-      } 
-      else {
-        if (dataRes.alertin){
+      } else {
+        if (dataRes.alertin) {
           notify_pi();
-        }
-        else{
+        } else {
           notify_nu();
         }
       }
@@ -104,7 +95,7 @@ function Login() {
                   id="email"
                   value={data.email}
                   onChange={onChange}
-                  placeholder="ilove@jcubestore.com"
+                  placeholder="ilove@CartDiya.com"
                 />
               </div>
               <div className="wrap">

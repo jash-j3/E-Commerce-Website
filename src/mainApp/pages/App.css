@@ -10,3 +10,14 @@
 /* body{
   overflow-x: hidden;
 } */
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: rgba(255, 255, 255, 0.918);
+}
+
+::-webkit-scrollbar-thumb {
+  background:  black;
+  /* border-radius: 25px; */
+  /* height: 50px; */
+}

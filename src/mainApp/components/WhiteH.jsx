@@ -12,7 +12,7 @@ let searchQuery = "";
 function WhiteH() {
   const navigate = useNavigate();
   const [isSearching, setIsSearching] = useState(true);
-  const[searchedPro, setSearchedPro] = useState([]);
+  const [searchedPro, setSearchedPro] = useState([]);
   // const [searchQuery, setSearchQuery] = useState("");
   // function handleChange(event) {
   //   fetch(`http://localhost:3001/products?name=${event.target.value}`).then(
@@ -23,26 +23,23 @@ function WhiteH() {
   const handleChange = async (event) => {
     event.preventDefault();
 
-    if (event.target.value!='') {
-      setIsSearching(false)
-    }
-    else{
-      setIsSearching(true)
+    if (event.target.value != "") {
+      setIsSearching(false);
+    } else {
+      setIsSearching(true);
     }
 
-    const fetchData = await fetch(`http://localhost:3001/products/find/`,{
-      method : "POST",
-      headers : {
-        "content-type" : "application/json"
+    const fetchData = await fetch(`http://localhost:3001/products/find/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body : JSON.stringify({name:event.target.value})
-    })
-    
-    const dataRes = await fetchData.json()
-    // console.log(dataRes[0]);
+      body: JSON.stringify({ name: event.target.value }),
+    });
+
+    const dataRes = await fetchData.json();
+
     setSearchedPro([dataRes]);
-    // console.log(dataRes);
-    // if(searchedPro[0][0]) console.log(searchedPro[0]);
     if (event.key !== "Enter") return;
     navigate(`/products/${dataRes[0].name}`);
     window.location.reload(0);
@@ -53,12 +50,11 @@ function WhiteH() {
     // }
   };
 
-
   return (
     <div className="whiteH">
       <Link to="/">
         <div>
-          <h1>JcubeStore</h1>
+          <h1>CartDiya</h1>
         </div>
       </Link>
       <div className="dwd">
@@ -81,21 +77,34 @@ function WhiteH() {
           onKeyUp={handleChange}
         ></input>
         <SearchIcon />
-        <div
-          className="srch"
-          style={isSearching ? { display: "none" } : {}}
-        >{searchedPro[0]&&searchedPro[0].length>0?searchedPro[0].map(p=>{if (p) {
-          let lnk=`/products/${p.name}`
-          return(
-            <div>
-              <Link to={lnk}><div className="srchpro">
-              <div className="srchproimg"><img src={p.image} alt="product-img" className="srchimg"/></div>
-              <div className="srchdet"><h3>{p.name}</h3>
-              <p className="srchp">{p.description}</p></div>
-            </div></Link>
-            </div>
-          )
-        }}):"No Products Found"}</div>
+        <div className="srch" style={isSearching ? { display: "none" } : {}}>
+          {searchedPro[0] && searchedPro[0].length > 0
+            ? searchedPro[0].map((p) => {
+                if (p) {
+                  let lnk = `/products/${p.name}`;
+                  return (
+                    <div>
+                      <Link to={lnk}>
+                        <div className="srchpro">
+                          <div className="srchproimg">
+                            <img
+                              src={p.image}
+                              alt="product-img"
+                              className="srchimg"
+                            />
+                          </div>
+                          <div className="srchdet">
+                            <h3>{p.name}</h3>
+                            <p className="srchp">{p.description}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                }
+              })
+            : "No Products Found"}
+        </div>
       </div>
       <div className="iconss">
         <div className="searchbar">

@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-elastic-carousel";
 import Item from "./Item";
 import "./Carou.css";
+import { Link } from "react-router-dom";
 function Carou() {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -58,11 +59,13 @@ function Carou() {
     <div className="carouClass">
       <Carousel breakPoints={breakPoints} pagination={false}>
         {products.map((product) => (
-          <Item
-            imag={product.imag}
-            text={product.text}
-            price={product.price}
-          ></Item>
+          <Link to={`/products/${product.text}`}>
+            <Item
+              imag={product.imag}
+              text={product.text}
+              price={product.price}
+            ></Item>
+          </Link>
         ))}
       </Carousel>
     </div>

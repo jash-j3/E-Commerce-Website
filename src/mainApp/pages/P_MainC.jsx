@@ -20,6 +20,9 @@ async function dataReturn(params) {
   console.log(dataRes);
   return dataRes[0];
 }
+
+
+
 function P_MainC() {
   const params = useParams();
 
@@ -164,15 +167,7 @@ function P_MainC() {
           <div className="product-info">
             <h3>Return and Refund Policy</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget
-              rutrum mi, et ultrices augue. Nunc condimentum risus dui. Donec
-              cursus, lacus sed blandit feugiat, felis erat volutpat justo, sit
-              amet viverra mauris neque ac nibh. Donec eget lectus ante. Nam ac
-              tellus ut velit condimentum sollicitudin. Ut viverra sed neque
-              vitae consequat. Interdum et malesuada fames ac ante ipsum primis
-              in faucibus. Nunc eu turpis id massa feugiat blandit et vitae
-              ligula. Praesent eget commodo ante. Duis ultrices efficitur
-              posuere.
+                  All Returns must be postmarked within ten(10) days of the purchase date. All the returned items must be new and unused condition, with all original tags and labels attached. All returned items must be in new and unused condition, with all original tags and labels attached. After receiving your return and inspecting the condition of your item, we will process your return or exchange. Please allow at least seven days from the receipt of your item to process your return or exchange. xRefunds may take 1-2 billing cycles to appear on your credit card statement, depending on your credit card company. 
             </p>
           </div>
         </div>

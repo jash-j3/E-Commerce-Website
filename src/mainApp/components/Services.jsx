@@ -15,7 +15,7 @@ function Upto() {
 
       <div className="upto-card marg">
         <div className="upto-txt">
-          <h3>JcubeStore Wallet Payments</h3>
+          <h3>CartDiya Wallet Payments</h3>
 
           <p>Pay directly from our wallets and Save more!!</p>
         </div>

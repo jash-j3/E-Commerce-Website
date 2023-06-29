@@ -4,16 +4,18 @@ import store from '../pages/store';
 import { useSelector, useDispatch } from 'react-redux';
 import {increment,decrement} from '../pages/store'
 import { counterSlice } from '../pages/store';
+import { Link } from 'react-router-dom';
+import './Log.css';
 
 function setToken(count)
 {
-    sessionStorage.setItem("Token" , count);
+    localStorage.setItem("Token" , count);
     getToken();
 }
 
 function getToken()
 {
-  let x =  sessionStorage.getItem('Token');
+  let x =  localStorage.getItem('Token');
   console.log("Hello",x);
   return x;
 }
@@ -24,13 +26,13 @@ function Log()
   if( getToken() == 1)
   {
     
-    return(<div>
-      <button onClick  = {() => {setToken(0); window.location.reload();}}>Logout</button> 
+    return(<div className='logout-btn'>
+      <button className='logout-btn' onClick  = {() => {setToken(0); window.location.reload();}}>Logout</button> 
     </div>)
   }
   else {
     return(<div>
-      <a href="">Login</a> | <a href="">Register</a>
+      <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
     </div>)
   }
 }

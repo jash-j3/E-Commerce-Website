@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
 
 .bodyDiv {
-  background-image: url("https://wallpapercave.com/wp/wp3152211.jpg");
+  background-image: url("../images/a66e586e-d38c-440c-ab6c-a10123b83c1b.png");
   background-repeat: no-repeat;
   background-size: cover;
   aspect-ratio: 3.5;
@@ -17,7 +17,7 @@
   height: 100%;
   width: 100%;
   z-index: 3;
-  background-color: rgb(0,0,0, 0.65);
+  background-color: rgb(0,0,0, 0.5);
   text-align: center;
   color: white;
   font-family: "Poppins", sans-serif;

@@ -19,7 +19,7 @@ function Item(params) {
       <div className="descc">
         <p>kgrbdkihjdsaskm</p>
       </div>
-      <div className="addtocart"><a href=""><div>Add to Cart</div></a></div>
+      <div className="addtocart"><a href=""><div>Details</div></a></div>
     </div>
   );
 }
