@@ -35,10 +35,10 @@ const navigate = useNavigate();
     const myToast = toast.error(
       (t) => (
         <span>
-          Please Login to Continue,{" "}
-          <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(myToast); }}>
+          Please <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(myToast); }}>
           Login
-        </span>
+        </span> to Continue.{" "}
+          
         </span>
       ),
       {
