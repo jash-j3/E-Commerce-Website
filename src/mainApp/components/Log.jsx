@@ -2,7 +2,6 @@ import React from 'react'
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import store from '../pages/store';
 import { useSelector, useDispatch } from 'react-redux';
-import {increment,decrement} from '../pages/store'
 import { counterSlice } from '../pages/store';
 import { Link } from 'react-router-dom';
 import './Log.css';
@@ -20,7 +19,6 @@ function getToken()
 }
 function Log()
 {
-  const count = useSelector((state) => state.loggedIn.value);
   const dispatch = useDispatch();
   if( getToken() == 1)
   {

@@ -7,6 +7,8 @@ import {loadStripe} from '@stripe/stripe-js';
 import { getToken } from "../components/Log";
 import toast, { Toaster } from "react-hot-toast";
 import { Navigate , useNavigate} from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
+import {Add} from "./store";
 
 async function dataReturn(params) {
   const id=params.id
@@ -24,13 +26,16 @@ async function dataReturn(params) {
 }
 
 
-
-
 function P_MainC() {
-const navigate = useNavigate();
 
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const currentCart = useSelector((state) => state.cart.products);
   const params = useParams();
   const [data, setData] = useState(null);
+
+  const addToCart =  (data)  =>{ dispatch(Add(data));};
   const notify_log = () => {
     const myToast = toast.error(
       (t) => (
@@ -197,7 +202,7 @@ const navigate = useNavigate();
               max={data.countInStock}
             ></input>
           </div>
-          <button type="button" id="btn-cart">
+          <button type="button" id="btn-cart" onClick = {() =>{addToCart(data); console.log(currentCart);}}>
             Add to Cart
           </button>
           <button type="button" id="btn-buy" onClick={()=>{handler(data)}}>

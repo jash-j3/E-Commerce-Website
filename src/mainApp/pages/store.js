@@ -3,26 +3,18 @@ import { configureStore } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 export const counterSlice = createSlice({
-  name: 'loggedIn',
+  name: 'cart',
   initialState: {
-    value: 0,
+    products: [],
   },
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes.
-      // Also, no return statement is required from these functions.
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
+    Add : (state, action) => {
+      state.products.push(action.payload);
     },
   },
 })
 export default configureStore({
-  reducer: {loggedIn: counterSlice.reducer},
+  reducer: {cart: counterSlice.reducer},
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { Add} = counterSlice.actions;

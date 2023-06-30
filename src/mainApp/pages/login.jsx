@@ -10,9 +10,7 @@ import { decrement, increment } from "./store";
 import { setToken } from "../components/Log";
 
 function Login() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const count = useSelector((state) => state.loggedIn.value);
   const [data, setData] = useState({
     email: "",
     pass: "",
