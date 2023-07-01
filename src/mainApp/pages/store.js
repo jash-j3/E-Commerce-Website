@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-
 import { createSlice } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { combineReducers } from '@reduxjs/toolkit'
@@ -26,6 +25,18 @@ export const counterSlice = createSlice({
   },
 })
 
+export const userSlice = createSlice({
+  name: 'user',
+  initialState: {
+    details: [],
+  },
+  reducers: {
+    Userr : (state, action) => {
+      state.details.push(action.payload);
+    },
+  },
+})
+
 const persistConfig = {
   key:'root',
   storage: storage,
@@ -33,6 +44,7 @@ const persistConfig = {
 
 export const rootReducers = combineReducers({
   cart: counterSlice.reducer,
+  user: userSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducers)
@@ -49,3 +61,4 @@ export default configureStore({
 })
 
 export const { Add} = counterSlice.actions;
+export const {Userr} = userSlice.actions;

@@ -13,6 +13,7 @@ import HeaderTop from "./mainApp/components/HeaderTop";
 import Signup from "./mainApp/pages/signup";
 import Login from "./mainApp/pages/login";
 import Cart from "./mainApp/components/Cart";
+import Profile from "./mainApp/pages/Profile";
 import { Provider } from 'react-redux'
 import store from "./mainApp/pages/store";
 import { PersistGate } from "redux-persist/integration/react";
@@ -26,7 +27,7 @@ const router = createBrowserRouter(
       <Route path="/products/:name" element={<P_App />} />
       <Route path="/products/id/:id" element={<P_App />} />
       <Route path = "/cart" element = {<Cart/>} />
-
+      <Route path = "/profile" element = {<Profile/>} />
     </Route>
   )
 );

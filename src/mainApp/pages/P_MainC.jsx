@@ -3,21 +3,21 @@ import "./P_MainC.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 import { getToken } from "../components/Log";
 import toast, { Toaster } from "react-hot-toast";
-import { Navigate , useNavigate} from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import {Add} from "./store";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Add } from "./store";
 
 async function dataReturn(params) {
-  const id=params.id
+  const id = params.id;
   const fetchData = await fetch(`http://localhost:3001/products/id/${id}`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
     },
-    body: JSON.stringify({ id: id}),
+    body: JSON.stringify({ id: id }),
   });
 
   const dataRes = await fetchData.json();
@@ -25,29 +25,34 @@ async function dataReturn(params) {
   return dataRes;
 }
 
-
 function P_MainC() {
-
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentCart = useSelector((state) => state.cart.products);
   const params = useParams();
   const [data, setData] = useState(null);
-  const [value, setValue] = useState(0);
-  const addToCart =  (data)  =>{ 
+  const [value, setValue] = useState(1);
+  const addToCart = (data) => {
     let newData = JSON.parse(JSON.stringify(data));
     delete newData.countInStock;
     newData.productCount = value;
-    dispatch(Add(newData));};
+    dispatch(Add(newData));
+  };
   const notify_log = () => {
     const myToast = toast.error(
       (t) => (
         <span>
-          Please <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(myToast); }}>
-          Login
-        </span> to Continue.{" "}
-          
+          Please{" "}
+          <span
+            className="toast-span"
+            onClick={() => {
+              navigate("/login");
+              toast.dismiss(myToast);
+            }}
+          >
+            Login
+          </span>{" "}
+          to Continue.{" "}
         </span>
       ),
       {
@@ -57,7 +62,7 @@ function P_MainC() {
           color: "#fff",
         },
       }
-    )
+    );
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -68,30 +73,32 @@ function P_MainC() {
     fetchData();
   }, [params]);
 
-  function handler(data1)
-  {
-    if(getToken() == 1) handleBuy(data1);
+  function handler(data1) {
+    if (getToken() == 1) handleBuy(data1);
     else notify_log();
   }
   async function handleBuy(data1) {
-    const stripePromise = await loadStripe('pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv')
-          const res = await fetch(`http://localhost:3001/products/create-checkout-session`,{
-            method : "POST",
-            headers  : {
-              "content-type" : "application/json"
-            },
-            body  : JSON.stringify(data1)
-          })
-          // if(res.statusCode === 500) return;
+    const stripePromise = await loadStripe(
+      "pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv"
+    );
+    const res = await fetch(
+      `http://localhost:3001/products/create-checkout-session`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data1),
+      }
+    );
+    // if(res.statusCode === 500) return;
 
-          const data2 = await res.json()
-          // console.log(data)
+    const data2 = await res.json();
+    // console.log(data)
 
-          // toast("Redirect to payment Gateway...!")
-          stripePromise.redirectToCheckout({sessionId : data2}) 
+    // toast("Redirect to payment Gateway...!")
+    stripePromise.redirectToCheckout({ sessionId: data2 });
   }
-
-
 
   if (!data) {
     return <div style={{ height: "90vh" }}>Loading...</div>;
@@ -203,16 +210,30 @@ function P_MainC() {
               name="quantity"
               min="1"
               placeholder="1"
-              value = {value}
-              onChange = {(event)=> {setValue(event.target.value)}}
+              value={value}
+              onChange={(event) => {
+                setValue(event.target.value);
+              }}
               max={data.countInStock}
-              
             ></input>
           </div>
-          <button type="button" id="btn-cart" onClick = {() =>{addToCart(data); console.log(currentCart);}}>
+          <button
+            type="button"
+            id="btn-cart"
+            onClick={() => {
+              addToCart(data);
+              console.log(currentCart);
+            }}
+          >
             Add to Cart
           </button>
-          <button type="button" id="btn-buy" onClick={()=>{handler(data)}}>
+          <button
+            type="button"
+            id="btn-buy"
+            onClick={() => {
+              handler(data);
+            }}
+          >
             Buy Now
           </button>
           <div className="product-info">
@@ -223,7 +244,16 @@ function P_MainC() {
           <div className="product-info">
             <h3>Return and Refund Policy</h3>
             <p>
-                  All Returns must be postmarked within ten(10) days of the purchase date. All the returned items must be new and unused condition, with all original tags and labels attached. All returned items must be in new and unused condition, with all original tags and labels attached. After receiving your return and inspecting the condition of your item, we will process your return or exchange. Please allow at least seven days from the receipt of your item to process your return or exchange. xRefunds may take 1-2 billing cycles to appear on your credit card statement, depending on your credit card company. 
+              All Returns must be postmarked within ten(10) days of the purchase
+              date. All the returned items must be new and unused condition,
+              with all original tags and labels attached. All returned items
+              must be in new and unused condition, with all original tags and
+              labels attached. After receiving your return and inspecting the
+              condition of your item, we will process your return or exchange.
+              Please allow at least seven days from the receipt of your item to
+              process your return or exchange. xRefunds may take 1-2 billing
+              cycles to appear on your credit card statement, depending on your
+              credit card company.
             </p>
           </div>
         </div>

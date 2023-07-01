@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./signup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLock, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -14,6 +14,7 @@ function Signup() {
     email: "",
     pass: "",
     cpass: "",
+    phone:"",
   });
   const notify_emae = () =>{
     const toastId= toast.error(
@@ -64,8 +65,8 @@ function Signup() {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const { fName, lName, email, pass, cpass } = data;
-    if (fName && email && pass && cpass) {
+    const { fName, lName, email, pass, cpass, phone } = data;
+    if (fName && email && pass && cpass && phone) {
       if (pass === cpass) {
         const fetchData = await fetch(`http://localhost:3001/users/signup`, {
           method: "POST",
@@ -146,6 +147,24 @@ function Signup() {
                   value={data.email}
                   onChange={onChange}
                   placeholder="Won't spam, Don't Worry!!"
+                />
+              </div>
+              <div className="wrap">
+                <i>
+                  <FontAwesomeIcon icon={faPhone} />
+                </i>
+                <label htmlFor="phone">
+                  <h2>
+                    Phone<span className="asterix">*</span>
+                  </h2>
+                </label>
+                <input
+                  type={"number"}
+                  name="phone"
+                  id="phone"
+                  value={data.phone}
+                  onChange={onChange}
+                  placeholder="Won't Call, Don't Worry!!"
                 />
               </div>
               <div className="wrap">

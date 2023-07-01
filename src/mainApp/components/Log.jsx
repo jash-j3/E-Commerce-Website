@@ -22,7 +22,6 @@ function Log()
   const dispatch = useDispatch();
   if( getToken() == 1)
   {
-    
     return(<div className='logout-btn'>
       <button className='logout-btn' onClick  = {() => {setToken(0); window.location.reload();}}>Logout</button> 
     </div>)

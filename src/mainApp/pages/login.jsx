@@ -6,15 +6,22 @@ import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer";
 import { Toaster, toast } from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./store";
 import { setToken } from "../components/Log";
+import { Userr } from "./store";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const [data, setData] = useState({
     email: "",
     pass: "",
   });
+  const currentUser = useSelector((state) => state.user.details);
+  const addToStore = (data) => {
+    let newData = JSON.parse(JSON.stringify(data));
+    dispatch(Userr(newData));
+  };
   const notify_nu = () =>{
     const toastId = toast.error(
       (t) => (
@@ -61,8 +68,10 @@ function Login() {
       console.log(dataRes);
       if (dataRes.alert) {
         setToken(1);
+        addToStore(dataRes.data)
         navigate("/");
         window.location.reload();
+        
       } else {
         if (dataRes.alertin) {
           notify_pi();

@@ -7,6 +7,11 @@ import "./HeaderTop.css";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Switch, Route, useNavigate } from "react-router-dom";
 
+function getToken()
+{
+  let loggedIn =  localStorage.getItem('Token');
+  return loggedIn;
+}
 
 function WhiteH() {
   const navigate = useNavigate();
@@ -113,9 +118,11 @@ function WhiteH() {
       </div>
       <div className="iconss">
         <div className="searchbar">
-          <Link to="/login">
+          {getToken()==1?<Link to="/profile">
             <AccountCircleOutlinedIcon />{" "}
-          </Link>
+          </Link>:<Link to="/login">
+            <AccountCircleOutlinedIcon />{" "}
+          </Link>}
         </div>
 
         <div className="searchbar">

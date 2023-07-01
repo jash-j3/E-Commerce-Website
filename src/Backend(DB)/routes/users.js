@@ -27,6 +27,7 @@ router.post(`/signup`, async (req, res) => {
           fName: req.body.fName,
           lName: req.body.lName,
           email: req.body.email,
+          phone: req.body.phone,
           pass: hash,
         });
 
@@ -56,9 +57,10 @@ router.post("/login", (req, res) => {
           // result == true'
           const dataSend = {
             _id: result._id,
-            fName: result.firstName,
-            lName: result.lastName,
+            fName: result.fName,
+            lName: result.lName,
             email: result.email,
+            phone: result.phone
           };
           console.log(dataSend);
           res.send({
