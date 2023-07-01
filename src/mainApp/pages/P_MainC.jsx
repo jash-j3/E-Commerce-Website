@@ -38,7 +38,8 @@ function P_MainC() {
   const addToCart =  (data)  =>{ 
     let newData = JSON.parse(JSON.stringify(data));
     newData.productCount = value;
-    dispatch(Add(newData));};
+    dispatch(Add(newData));
+  notify_add();};
   const notify_log = () => {
     const myToast = toast.error(
       (t) => (
@@ -46,6 +47,26 @@ function P_MainC() {
           Please <span className="toast-span" onClick={() => {navigate("/login"); toast.dismiss(myToast); }}>
           Login
         </span> to Continue.{" "}
+          
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    )
+  };
+
+  const notify_add = () => {
+    const myToast1 = toast.success(
+      (t) => (
+        <span>
+          Added to <span className="toast-span" onClick={() => {navigate("/cart"); toast.dismiss(myToast1); }}>
+          Cart
+        </span>
           
         </span>
       ),
