@@ -34,8 +34,12 @@ function P_MainC() {
   const currentCart = useSelector((state) => state.cart.products);
   const params = useParams();
   const [data, setData] = useState(null);
-
-  const addToCart =  (data)  =>{ dispatch(Add(data));};
+  const [value, setValue] = useState(0);
+  const addToCart =  (data)  =>{ 
+    let newData = JSON.parse(JSON.stringify(data));
+    delete newData.countInStock;
+    newData.productCount = value;
+    dispatch(Add(newData));};
   const notify_log = () => {
     const myToast = toast.error(
       (t) => (
@@ -199,7 +203,10 @@ function P_MainC() {
               name="quantity"
               min="1"
               placeholder="1"
+              value = {value}
+              onChange = {(event)=> {setValue(event.target.value)}}
               max={data.countInStock}
+              
             ></input>
           </div>
           <button type="button" id="btn-cart" onClick = {() =>{addToCart(data); console.log(currentCart);}}>
