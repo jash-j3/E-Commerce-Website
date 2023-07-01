@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Profile() {
   const currentUser = useSelector((state) => state.user.details);
-  console.log(currentUser);
-
+  
+    if(currentUser.length>0){
   return (
     <>
       <div className="pro-bdy">
@@ -38,7 +38,10 @@ function Profile() {
       </div>
       <Footer />
     </>
-  );
+  )}
+  else{
+    return <>LOGIN</>
+  };
 }
 
 export default Profile;

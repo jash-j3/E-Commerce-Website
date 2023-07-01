@@ -34,6 +34,9 @@ export const userSlice = createSlice({
     Userr : (state, action) => {
       state.details.push(action.payload);
     },
+    Userrr : (state, action) => {
+      state.details = [];
+    }
   },
 })
 
@@ -62,3 +65,4 @@ export default configureStore({
 
 export const { Add} = counterSlice.actions;
 export const {Userr} = userSlice.actions;
+export const {Userrr} = userSlice.actions;
