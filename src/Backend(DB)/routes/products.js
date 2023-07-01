@@ -42,8 +42,8 @@ router.post('/' , async (req, res)=>
 
 router.post('/create-checkout-session' , async (req, res)=>
 {   
-    const items=[];
-    items[0]=req.body
+    
+    const items = req.body
     console.log(items);
     try {
         const params = {
@@ -61,13 +61,14 @@ router.post('/create-checkout-session' , async (req, res)=>
                   name: item.name,
                   // images : [item.image]
                 },
-                unit_amount: item.price * 100,
+                unit_amount: item.price*100,
               },
               adjustable_quantity: {
                 enabled: true,
                 minimum: 1,
+                maximum: item.countInStock,
               },
-              quantity: 1,
+              quantity: item.productCount,
             };
           }),
     

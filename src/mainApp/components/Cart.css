@@ -14,17 +14,23 @@
     min-height: 100vh;
     height: fit-content;
     width: 100vw;
+    
 
 }
 
 .product-card {
     display: flex;
     flex-direction: row;
+    padding: 20px 0 20px 10px;
+    margin: 10px;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
 
 }
 
 .out>.orders {
     margin-top: 20px;
+    padding: 30px 10px;
     flex-grow: 2;
     flex-direction: column;
     flex-basis: 2fr;
@@ -43,11 +49,11 @@
 }
 
 .product-list>.product-card .name-date {
-    margin-top: 25px;
     display: flex;
     flex-direction:column;
     justify-content: left;
     align-items: first baseline;
+    width: 55%;
     padding: 0px 20px 3px 0px;
 }
 
@@ -56,17 +62,34 @@
 }
 
 .product-card>.qty-count {
-    margin-top: 14px;
+    margin-top: 60px;
 }
-
+.details{
+    display:flex;
+    width: 80%;
+}
 .out>.orders>* {
     background-color: rgb(255, 255, 255);
 }
+.productImage{
+    width:30%;
+    height:100%;
+    padding:20px;
+}
 
+.productImage > img{
+    height: 100px;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
 .remove-item {
     transition: color 0.2s ease-in;
 }
 
+.counter{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .remove-item:hover {
     color: rgb(64, 64, 241);
 }
@@ -108,6 +131,9 @@
     height: 28px;
 }
 
+.quantity{
+    padding-top: 5px;
+}
 .qty-count>.quantity>input[type="text"] {
     width: 40px;
     height: 25px;
@@ -122,7 +148,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px;
+    padding: 40px 15px 0;
 }
 
 .place-order-button>.place-order:hover {
@@ -159,9 +185,6 @@
     border-bottom: 2px solid #878787;
 }
 
-.price-summary>.price {
-    margin-top: 18px;
-}
 
 .price-summary>.price-details>p {
     font-size: 16px;
@@ -183,17 +206,25 @@
 
 .price-summary>.price h1,
 .Disc h1,
-.Delivery h1 {
+.Delivery h1, .price-final h1 {
     font-weight: 400;
     font-size: 19px;
     color: #212121;
 }
 .price{
     display: flex;
-    padding-left: 100px;
-    margin-top: 30px;
+    margin-top: 10px;
+    width:15%;
 }
 
+.empty-image{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
 @media screen and (min-width:1020px) {
     .out>.orders {
         margin-left: 2.5%;

@@ -34,10 +34,9 @@ function P_MainC() {
   const currentCart = useSelector((state) => state.cart.products);
   const params = useParams();
   const [data, setData] = useState(null);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const addToCart =  (data)  =>{ 
     let newData = JSON.parse(JSON.stringify(data));
-    delete newData.countInStock;
     newData.productCount = value;
     dispatch(Add(newData));};
   const notify_log = () => {
@@ -74,13 +73,14 @@ function P_MainC() {
     else notify_log();
   }
   async function handleBuy(data1) {
+    data1.productCount = value;
     const stripePromise = await loadStripe('pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv')
           const res = await fetch(`http://localhost:3001/products/create-checkout-session`,{
             method : "POST",
             headers  : {
               "content-type" : "application/json"
             },
-            body  : JSON.stringify(data1)
+            body  : JSON.stringify([data1])
           })
           // if(res.statusCode === 500) return;
 
@@ -88,7 +88,12 @@ function P_MainC() {
           // console.log(data)
 
           // toast("Redirect to payment Gateway...!")
-          stripePromise.redirectToCheckout({sessionId : data2}) 
+          const done = await stripePromise.redirectToCheckout({sessionId : data2}) ;
+          if(done)
+          {
+              // code for reducing products;
+          }
+          
   }
 
 
