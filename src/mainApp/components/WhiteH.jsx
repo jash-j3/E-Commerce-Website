@@ -125,9 +125,9 @@ function WhiteH() {
           </a>
         </div>
         <div className="searchbar">
-          <a href="">
+          <Link to = "/cart">
             <ShoppingCartOutlinedIcon />{" "}
-          </a>
+          </Link>
         </div>
       </div>
     </div>

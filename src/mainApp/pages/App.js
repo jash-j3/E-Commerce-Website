@@ -14,6 +14,8 @@ import Footer from "../components/Footer"
 import P_App from './P_App'
 import WhiteH from "../components/WhiteH";
 import GreenH from "../components/GreenH";
+import Cart from "../components/Cart";
+
 function App() {
   return (
     <div>
@@ -33,6 +35,7 @@ function App() {
       <Services />
       <Footer />
       {/* <P_App /> */}
+      {/* <Cart/> */}
     </div>
   );
 }
