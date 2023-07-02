@@ -14,7 +14,7 @@ import Footer from "../components/Footer"
 import P_App from './P_App'
 import WhiteH from "../components/WhiteH";
 import GreenH from "../components/GreenH";
-import Cart from "../components/Cart";
+import Cart from "./Cart";
 
 function App() {
   return (

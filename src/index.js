@@ -12,7 +12,7 @@ import P_App from "./mainApp/pages/P_App";
 import HeaderTop from "./mainApp/components/HeaderTop";
 import Signup from "./mainApp/pages/signup";
 import Login from "./mainApp/pages/login";
-import Cart from "./mainApp/components/Cart";
+import Cart from "./mainApp/pages/Cart";
 import Profile from "./mainApp/pages/Profile";
 import { Provider } from 'react-redux'
 import store from "./mainApp/pages/store";

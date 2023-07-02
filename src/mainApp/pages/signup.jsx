@@ -165,6 +165,7 @@ function Signup() {
                   value={data.phone}
                   onChange={onChange}
                   placeholder="Won't Call, Don't Worry!!"
+                  className="phoneeeee"
                 />
               </div>
               <div className="wrap">

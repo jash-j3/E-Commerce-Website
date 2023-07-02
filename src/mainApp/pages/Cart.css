@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.container {
+.out {
     background-color: rgb(210, 211, 213);
     display: flex;
     flex-direction: row;
@@ -14,18 +14,23 @@
     min-height: 100vh;
     height: fit-content;
     width: 100vw;
+    
 
 }
 
 .product-card {
-    margin-top: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #878787;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0 20px 10px;
+    margin: 10px;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+
 }
 
-.container>.orders {
+.out>.orders {
     margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 30px 10px;
     flex-grow: 2;
     flex-direction: column;
     flex-basis: 2fr;
@@ -33,7 +38,7 @@
     height: fit-content;
 }
 
-.container>.orders>.product-list {
+.out>.orders>.product-list {
     padding: 15px 24px;
 }
 
@@ -45,35 +50,53 @@
 
 .product-list>.product-card .name-date {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction:column;
+    justify-content: left;
+    align-items: first baseline;
+    width: 55%;
     padding: 0px 20px 3px 0px;
 }
 
 .product-list>.product-card>.seller-name {
     display: inline-block;
-    margin-bottom: 14px;
 }
 
 .product-card>.qty-count {
-    margin-top: 14px;
+    margin-top: 60px;
 }
-
-.container>.orders>* {
+.details{
+    display:flex;
+    width: 80%;
+}
+.out>.orders>* {
     background-color: rgb(255, 255, 255);
 }
+.productImage{
+    width:30%;
+    height:100%;
+    padding:20px;
+}
 
+.productImage > img{
+    height: 100px;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
 .remove-item {
     transition: color 0.2s ease-in;
 }
 
+.counter{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .remove-item:hover {
     color: rgb(64, 64, 241);
 }
 
 .place-order-button>button {
     height: 51px;
-    width: 250px;
+    width: 100%;
     padding: 16px 30px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -108,6 +131,9 @@
     height: 28px;
 }
 
+.quantity{
+    padding-top: 5px;
+}
 .qty-count>.quantity>input[type="text"] {
     width: 40px;
     height: 25px;
@@ -119,9 +145,10 @@
 }
 
 .place-order-button {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px;
+    padding: 40px 15px 0;
 }
 
 .place-order-button>.place-order:hover {
@@ -134,13 +161,13 @@
     opacity: 1;
 }
 
-.container>.price-summary {
+.out>.price-summary {
     flex-basis: 1fr;
     flex-grow: 1;
     max-width: 414.5px;
 }
 
-.container>.price-summary {
+.out>.price-summary {
     background-color: rgb(255, 255, 255);
     height: fit-content;
     padding: 10px 24px;
@@ -158,9 +185,6 @@
     border-bottom: 2px solid #878787;
 }
 
-.price-summary>.price {
-    margin-top: 18px;
-}
 
 .price-summary>.price-details>p {
     font-size: 16px;
@@ -182,43 +206,55 @@
 
 .price-summary>.price h1,
 .Disc h1,
-.Delivery h1 {
+.Delivery h1, .price-final h1 {
     font-weight: 400;
     font-size: 19px;
     color: #212121;
 }
+.price{
+    display: flex;
+    margin-top: 10px;
+    width:15%;
+}
 
-
+.empty-image{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
 @media screen and (min-width:1020px) {
-    .container>.orders {
+    .out>.orders {
         margin-left: 2.5%;
     }
 
-    .container>.price-summary {
+    .out>.price-summary {
         margin-right: 2.5%;
     }
 }
 
 @media screen and (max-width:1020px) {
-    .container {
+    .out {
         flex-direction: column;
         /* align-content: center; */
         flex-grow: 1;
         gap: 15px;
     }
 
-    .container>* {
+    .out>* {
         flex-grow: 1;
         margin: 0px 10px;
         max-width: none !important;
     }
 
-    .container>.orders {
+    .out>.orders {
         margin-bottom: 0px;
         margin-right: 18px;
     }
 
-    .container>.price-summary {
+    .out>.price-summary {
         margin-top: 0px;
         margin-right: 18px;
 
@@ -226,7 +262,7 @@
 }
 
 @media screen and (max-width:670px) {
-    .container {
+    .out {
         gap: 5px;
     }
 }
@@ -244,4 +280,8 @@
         flex-direction: column;
         align-items: flex-start !important;
     }
+}
+
+.orders{
+    background-color: white;
 }

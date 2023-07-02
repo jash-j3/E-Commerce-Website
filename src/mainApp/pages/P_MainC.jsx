@@ -9,6 +9,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Add } from "./store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSolid , faPlus , faMinus ,faLg, faFade} from "@fortawesome/free-solid-svg-icons";
 
 async function dataReturn(params) {
   const id = params.id;
@@ -32,11 +34,35 @@ function P_MainC() {
   const params = useParams();
   const [data, setData] = useState(null);
   const [value, setValue] = useState(1);
-  const addToCart = (data) => {
+  const addToCart =  (data)  =>{ 
     let newData = JSON.parse(JSON.stringify(data));
-    delete newData.countInStock;
     newData.productCount = value;
+    if(value == 0)
+    {
+        setValue(1);
+        return;
+    }
     dispatch(Add(newData));
+    notify_add();
+  };
+  const notify_add = () => {
+    const myToast1 = toast.success(
+      (t) => (
+        <span>
+          Added to <span className="toast-span" onClick={() => {navigate("/cart"); toast.dismiss(myToast1); }}>
+          Cart
+        </span>
+
+        </span>
+      ),
+      {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      }
+    )
   };
   const notify_log = () => {
     const myToast = toast.error(
@@ -78,26 +104,29 @@ function P_MainC() {
     else notify_log();
   }
   async function handleBuy(data1) {
-    const stripePromise = await loadStripe(
-      "pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv"
-    );
-    const res = await fetch(
-      `http://localhost:3001/products/create-checkout-session`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data1),
-      }
-    );
-    // if(res.statusCode === 500) return;
+    data1.productCount = value;
+    const stripePromise = await loadStripe('pk_test_51NNfYPSFJzv4F3NJF6nw8wpnrhEM9q8ilUX1MKbT53ZzqP3AVgkLNaPHB2qPaYpFdtlQvakKoOFqQ1676HlvtmrO008KMPp1xv')
+          const res = await fetch(`http://localhost:3001/products/create-checkout-session`,{
+            method : "POST",
+            headers  : {
+              "content-type" : "application/json"
+            },
+            body  : JSON.stringify([data1])
+          })
+          // if(res.statusCode === 500) return;
 
     const data2 = await res.json();
     // console.log(data)
 
     // toast("Redirect to payment Gateway...!")
     stripePromise.redirectToCheckout({ sessionId: data2 });
+          // toast("Redirect to payment Gateway...!")
+          const done = await stripePromise.redirectToCheckout({sessionId : data2}) ;
+          if(done)
+          {
+              // code for reducing products;
+          }
+          
   }
 
   if (!data) {
@@ -204,8 +233,7 @@ function P_MainC() {
           <div className="quantity">
             <p>Quantity</p>
             <label htmlFor="quantity"></label>
-            <input
-              type="number"
+            {/* <input
               id="quantity"
               name="quantity"
               min="1"
@@ -213,9 +241,27 @@ function P_MainC() {
               value={value}
               onChange={(event) => {
                 setValue(event.target.value);
+                const pattern = /\D+/;
+                let bool = pattern.test(event.target.value);
+                console.log(bool);
+                if(bool)
+                {
+                  setValue(1);
+                  return;
+                }
+                if(event.target.value > data.countInStock)
+                setValue(data.countInStock);
+                else if(event.target.value < 0)
+                {
+                  setValue(1);
+                }
+
               }}
               max={data.countInStock}
-            ></input>
+            ></input> */}
+            <FontAwesomeIcon icon={faMinus} className = "faFade" onClick = {() => {  if(value > 1) {setValue(value -1);}}} />
+            <span className='counter'> {value}</span>
+            <FontAwesomeIcon icon={faPlus}  onClick = {() => { if(value < data.countInStock) {setValue(value + 1)}}}/>
           </div>
           <button
             type="button"

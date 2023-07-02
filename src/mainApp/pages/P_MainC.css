@@ -119,14 +119,14 @@ a{
   opacity: 1;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.phoneeeee::-webkit-outer-spin-button,
+.phoneeeee::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
+.phoneeeee[type=number] {
   -moz-appearance: textfield;
 }
 

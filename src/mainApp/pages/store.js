@@ -17,11 +17,56 @@ export const counterSlice = createSlice({
   name: 'cart',
   initialState: {
     products: [],
+    totalPrice : 0,
   },
   reducers: {
     Add : (state, action) => {
-      state.products.push(action.payload);
+      let found = false;
+      let num = 0;
+      for(let product of state.products)
+      {
+        if(product.id == action.payload.id)
+        {
+            found = true;
+            break;
+        }
+        num++;
+      }
+      if(!found)
+      {
+        state.products.push(action.payload);
+        state.totalPrice+= action.payload.productCount*action.payload.price;
+      }
+      else
+      {
+        state.totalPrice-= state.products[num].productCount*(action.payload.price);
+        state.products[num].productCount = action.payload.productCount;
+        state.totalPrice+= action.payload.productCount*action.payload.price;
+
+      }
     },
+    increment:(state,action) =>{
+      state.totalPrice-=(state.products[action.payload].productCount*state.products[action.payload].price);
+      state.products[action.payload].productCount++;
+      state.totalPrice+=(state.products[action.payload].productCount*state.products[action.payload].price);
+
+    },
+    decrement: (state,action) =>{
+      state.totalPrice-=(state.products[action.payload].productCount*state.products[action.payload].price);
+      state.products[action.payload].productCount--;
+      state.totalPrice+=(state.products[action.payload].productCount*state.products[action.payload].price);
+      
+      if(state.products[action.payload].productCount === 0)
+      {
+          state.products.splice(action.payload, 1);
+      }
+      
+    },
+
+    Empty: (state) => {
+      state.products = [];
+      state.totalPrice = 0;
+    }
   },
 })
 
@@ -63,6 +108,7 @@ export default configureStore({
         }),
 })
 
-export const { Add} = counterSlice.actions;
+
 export const {Userr} = userSlice.actions;
 export const {Userrr} = userSlice.actions;
+export const { Add,increment, decrement, Empty} = counterSlice.actions;

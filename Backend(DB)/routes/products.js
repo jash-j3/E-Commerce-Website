@@ -5,8 +5,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Stripe = require("stripe");
 
-// const bodyParser = require('body-parser');
-// router.use(express.json());
 
 const stripe = new Stripe('sk_test_51NNfYPSFJzv4F3NJ3TzQ1iO2Mo1qpGHPNMi0M3NgRm7vrpFgd6yrRF9FUYTV6594pLuRnwBuvjGTeuvIngE6Dozd009c4HbfoR')
 
@@ -42,8 +40,8 @@ router.post('/' , async (req, res)=>
 
 router.post('/create-checkout-session' , async (req, res)=>
 {   
-    const items=[];
-    items[0]=req.body
+    
+    const items = req.body;
     console.log(items);
     try {
         const params = {
@@ -61,13 +59,14 @@ router.post('/create-checkout-session' , async (req, res)=>
                   name: item.name,
                   // images : [item.image]
                 },
-                unit_amount: item.price * 100,
+                unit_amount: item.price*100,
               },
               adjustable_quantity: {
                 enabled: true,
-                minimum: 1,
+                minimum: 0,
+                maximum: item.countInStock,
               },
-              quantity: 1,
+              quantity: item.productCount,
             };
           }),
     
