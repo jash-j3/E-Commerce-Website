@@ -1,0 +1,46 @@
+.top-cat-h3 {
+  font-size: 28px;
+  padding: 30px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+
+.tech-img {
+  border-radius: 15px;
+  display: inline;
+}
+
+.card {
+  display: inline;
+  position: relative;
+  text-align: center;
+}
+
+.card h3 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  color: white;
+  font-size: 25px;
+  font-weight: 650;
+}
+
+.shops {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1360px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+}

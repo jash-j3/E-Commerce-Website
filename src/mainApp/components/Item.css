@@ -1,0 +1,65 @@
+.carouDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  width: 250px;
+  background-color: white;
+  color: black !important;
+  margin: 0;
+}
+
+.carouDiv img {
+  background-color: #f5f6f6;
+  height: 250px;
+  width: 250px;
+}
+
+.carouDiv span {
+  font-size: 1.3rem;
+}
+
+.dydPIA{
+  margin: 0% !important;
+}
+
+.price-prod {
+  font-weight: 600;
+  /* font-size: 1.2rem; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.descc {
+  margin-top: 15px;
+  font-size: 0.8rem;
+}
+
+.addtocart {
+  width: 100%;
+  height: 100%;
+}
+
+.addtocart a{
+  color: black;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  border-width: 2px !important;
+  border-color: black !important;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 12px 22px;
+  display: flex;
+  justify-content: center;
+  border-style: solid !important;
+
+}
+
+.addtocart a:hover{
+  background-color: black;
+  color: white;
+}

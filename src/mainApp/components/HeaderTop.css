@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+.greenH{
+    background-color: #003d29;
+    width: 100%;
+    padding: 7px 0;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 12px;
+}
+
+.phone-icon{
+    height: 12px !important;
+}
+
+.greenH a{
+    color: white;
+    text-decoration: none;
+    
+}
+
+.whiteH a{
+    color: #231f1e;
+    text-decoration: none;
+    
+}
+
+.whiteH{
+    color: rgb(35, 31, 30);
+    padding: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    height: 100%;
+    z-index: 33;
+}
+
+.whiteH h1{
+    color: rgb(0, 61, 41);
+    font-family: 'Poppins';
+}
+
+
+.dwd{
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    gap: 25px;
+}
+
+.input-box{
+    height: 40px;
+
+}
+
+.searchbar{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.srch{
+    min-height: 100px;
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 400px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.918);
+    z-index: 31;
+    top: 41px;
+    border: solid 0.2px black;
+    padding: 10px;
+}
+
+.srchproimg{
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.srchimg{
+    width: 40px;
+    object-fit: contain;
+
+}
+
+.srchp{
+
+    font-size: 12px;
+}
+
+
+
+.srchpro{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.inv{
+    display: none;
+}
+
+.acc-txt{
+    margin-left: 4px;
+}
+
+.whiteH a:hover{
+    color: rgb(36, 32, 30,0.75);
+}
+
+.iconss{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15%;
+}
+
+@media all and (max-width:1450px){
+    .acc-txt{
+        display: none;
+    }
+}
+
+@media all and (max-width:900px){
+    .dwd{
+        display: none;
+    }
+}
+
+@media all and (max-width:600px){
+    .sb{
+        display: none;
+    }
+}

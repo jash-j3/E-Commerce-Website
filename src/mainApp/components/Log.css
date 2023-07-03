@@ -1,0 +1,9 @@
+.logout-btn{
+    font-size: 12px;
+    height: auto;
+    background: transparent;
+    margin: 0 !important;
+    width: fit-content;
+    cursor: pointer;
+}
+
