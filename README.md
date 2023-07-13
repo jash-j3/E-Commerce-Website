@@ -30,5 +30,5 @@ The website, CartDiya is a MERN App. The database is on MongoDB Atlas. It is a k
 * Each dynamically scraped product has also been posted to the data using requests module.
 * Payment gateway integrated using Stripe.
 * Homepage is responsive.
-* 
+  
   
