@@ -55,5 +55,16 @@ Learn more at [Stripe Test Cards Docs](https://stripe.com/docs/testing)
 * Each dynamically scraped product has also been posted to the data using requests module.
 * Payment gateway integrated using Stripe.
 * Homepage is responsive.
-  
+
+## Extension
+The CartDiya Extension runs only on Chrome.
+* To load the extension, go to [Chrome Extensions Manager](chrome://extensions/)
+* Turn on the Developer mode.
+* Click on Load Unpacked and then select the Extension Folder.
+
+The Extension is now loaded.
+It can be used to,
+* Search for products in the database directly from the Extension.
+* Navigate to the HomePage of the website by clicking the CartDiya icon.
+* Navigate to your Cart by clicking the Cart icon.
   
