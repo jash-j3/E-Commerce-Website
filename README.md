@@ -23,24 +23,25 @@ The website, CartDiya is a MERN App. The database is on MongoDB Atlas. It is a k
 ## For Payment (buy a product):
 For this, click on Buy Now on the product page, or add the required products to the card, and then Buy. This will redirect to the Stripe Payment Page.
 Real payments have not been enabled for obvious reasons. Anyways, Stripe provides test cards to check the gateway. Here are some of the cards (successful payments) that stripe provides. You can use any of these with a valid date and CVC.
-Visa	4242424242424242	
-Visa (debit)	4000056655665556	
-Mastercard	5555555555554444	
-Mastercard (2-series)	2223003122003222	
-Mastercard (debit)	5200828282828210	
-Mastercard (prepaid)	5105105105105100
-American Express	378282246310005	
-American Express	371449635398431
-Discover	6011111111111117	
-Discover	6011000990139424	
-Discover (debit)	6011981111111113
-Diners Club	3056930009020004	
-Diners Club (14-digit card)	36227206271667	
-BCcard and DinaCard	6555900000604105	
-JCB	3566002020360505	
-UnionPay	6200000000000005	
-UnionPay (debit)	6200000000000047
-UnionPay (19-digit card)	6205500000000000004	
+*Visa	4242424242424242
+*Visa (debit)	4000056655665556
+*Mastercard	5555555555554444
+*Mastercard (2-series)	2223003122003222
+*Mastercard (debit)	5200828282828210
+*Mastercard (prepaid)	5105105105105100
+*American Express	378282246310005
+*American Express	371449635398431
+*Discover	6011111111111117
+*Discover	6011000990139424
+*Discover (debit)	6011981111111113
+*Diners Club	3056930009020004
+*Diners Club (14-digit card)	36227206271667
+*BCcard and DinaCard	6555900000604105
+*JCB	3566002020360505
+*UnionPay	6200000000000005
+*UnionPay (debit)	6200000000000047
+*UnionPay (19-digit card)	6205500000000000004
+
 
 * Learn more at [Stripe Test Cards Docs](https://stripe.com/docs/testing)
 
