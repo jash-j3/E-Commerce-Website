@@ -9,7 +9,7 @@ Again run, : ```npm i --f```
 After all the dependencies have been installed, run ```npm start```.
 
 
-Wait for 5 seconds, till you see "Database Connection is ready...".
+Wait for a couple of seconds, till you see "Database Connection is ready...".
 
 The site is working!
 
