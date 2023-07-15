@@ -8,6 +8,7 @@
     align-items:center;
     justify-content: space-around;
     color: #333;
+    position:  relative;
 }
 
 .bgcolor img{
@@ -16,12 +17,31 @@
 }
 
 .bgcolor h1{
-    font-size: 4rem;
+    position: absolute;
+    top: 55px;
+    animation: sale 1.5s ease infinite  ;
+}
+
+@keyframes sale {
+    0%{
+        font-size: 4rem;
+
+    }
+
+    50%{
+        font-size: 5.3rem;
+
+    }
+
+    100%{
+        font-size: 4rem;
+
+    }
 }
 
 .bgcolor h6{
     font-size: 1.6rem;
-    margin: 10px 0;
+    margin: 50px 0 10px;
     font-weight: 500 !important;
 }
 .bgcolor a{

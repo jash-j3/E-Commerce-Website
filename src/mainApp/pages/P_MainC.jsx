@@ -270,6 +270,7 @@ function P_MainC() {
               addToCart(data);
               console.log(currentCart);
             }}
+            style={{"cursor":"pointer"}}
           >
             Add to Cart
           </button>
@@ -279,6 +280,7 @@ function P_MainC() {
             onClick={() => {
               handler(data);
             }}
+            style={{"cursor":"pointer"}}
           >
             Buy Now
           </button>
