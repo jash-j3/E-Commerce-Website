@@ -43,7 +43,7 @@ Real payments have not been enabled for obvious reasons. Anyways, Stripe provide
 * UnionPay (19-digit card)	6205500000000000004
 
 
-* Learn more at [Stripe Test Cards Docs](https://stripe.com/docs/testing)
+Learn more at [Stripe Test Cards Docs](https://stripe.com/docs/testing)
 
 
 ##  Salient Features
