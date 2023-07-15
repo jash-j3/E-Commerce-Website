@@ -1,0 +1,25 @@
+
+{
+    "name": "CartDiya",
+    "version": "1.0.0",
+    "description": "Interactino with CartDiya",
+    "manifest_version": 3,
+    "author": "Dikshant Khandelwal",
+    "permissions": ["activeTab", "tabs","scripting","http://localhost:3000"],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+      }
+    ,
+    "content_scripts":[
+        {
+            "matches":["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "action":{
+        "default_popup": "popup.html",
+        "default_title": "CartDiya",
+        "default_icon" : "icon.png"
+    }
+}
